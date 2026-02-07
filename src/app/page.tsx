@@ -22,6 +22,7 @@ import {
   DerezCountdown,
   DossierCard,
   GridMap,
+  LoadingScreen,
 } from "@/components/website";
 import { testimonials } from "@/data";
 
@@ -490,9 +491,32 @@ function FeatureCard({
 export default function Home() {
   const { theme } = useTheme();
   const currentTheme = themeById.get(theme);
+  const [isLoading, setIsLoading] = React.useState(() => {
+    // Only show loading on first visit in this session
+    if (typeof window !== 'undefined') {
+      const hasLoaded = sessionStorage.getItem('hasLoadedOnce');
+      return !hasLoaded;
+    }
+    return true;
+  });
+  const [showContent, setShowContent] = React.useState(false);
+
+  // Show loading screen on first visit
+  if (isLoading) {
+    return <LoadingScreen onLoadingComplete={() => {
+      setIsLoading(false);
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('hasLoadedOnce', 'true');
+      }
+      // Small delay before showing content with animation
+      setTimeout(() => setShowContent(true), 100);
+    }} />;
+  }
 
   return (
-    <div className="relative min-h-screen bg-background">
+    <div className={`relative min-h-screen bg-background transition-opacity duration-1000 ${
+      showContent ? 'opacity-100' : 'opacity-0'
+    }`}>
       {/* 3D Background */}
       <div className="pointer-events-none fixed inset-0 z-0">
         <Grid3D
@@ -560,9 +584,7 @@ export default function Home() {
 
             {/* Subtitle */}
             <p className="mx-auto mb-8 mt-18 max-w-2xl text-center text-lg text-foreground/80">
-              An authentic <span className="text-primary">Tron: Ares</span>{" "}
-              inspired theme featuring Greek god color schemes, movie UI
-              components, and immersive 3D effects.
+                An authentic, community-driven coding space focused on building together, learning together, and shipping real projects.
             </p>
 
             {/* CTA Buttons */}

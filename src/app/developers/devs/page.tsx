@@ -7,6 +7,9 @@ import { Grid3D } from "@/components/thegridcn/grid";
 import { coreMembers, coordinators } from "@/data/devData";
 import { ExternalLink, Github, Linkedin, Instagram } from "lucide-react";
 
+// Note: metadata export cannot be used in client components
+// This metadata should be moved to layout.tsx or a server component wrapper
+
 interface DeveloperCardProps {
 image: string;
   title: string;

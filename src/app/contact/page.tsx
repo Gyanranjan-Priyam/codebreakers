@@ -1,6 +1,24 @@
+import { Metadata } from 'next'
 import { Mail, Phone, MapPin, Github, Instagram, Linkedin, Twitter } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 import { Grid3D } from "@/components/thegridcn/grid";
+import { generateSEO, generateWebPageSchema } from '@/lib/seo'
+
+export const metadata: Metadata = generateSEO({
+  title: 'Contact Us',
+  description: 'Get in touch with CodeBreakers GCEK. Reach out for collaborations, queries, or to join our coding community. Contact us via email, social media, or visit us at Government College of Engineering Kalahandi.',
+  url: '/contact',
+  keywords: [
+    'contact CodeBreakers',
+    'CodeBreakers GCEK contact',
+    'reach CodeBreakers',
+    'coding club contact',
+    'GCEK coding club email',
+    'join CodeBreakers',
+    'CodeBreakers collaboration',
+    'tech club contact Kalahandi',
+  ],
+})
 
 export default function ContactPage() {
   return (
