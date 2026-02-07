@@ -10,7 +10,7 @@ export default function NotFound() {
         404
       </h1>
       <p className="mt-4 font-display text-lg tracking-wider text-foreground/80">
-        Welcome to the void. Let’s get you back.
+        Welcome to the void. Let's get you back.
       </p>
       <div className="mt-8 flex gap-4">
         <Link

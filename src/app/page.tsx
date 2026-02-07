@@ -22,7 +22,6 @@ import {
   DerezCountdown,
   DossierCard,
   GridMap,
-  LoadingScreen,
 } from "@/components/website";
 import { testimonials } from "@/data";
 
@@ -32,56 +31,45 @@ const Grid3D = dynamic(
   { ssr: false },
 );
 
-// Available components for terminal display
-const availableComponents = [
-  // 3D Components
-  "grid-3d",
-  "tunnel",
-  "god-avatar",
-  // Data Display
-  "data-card",
-  "status-bar",
-  "video-player",
-  "floating-panel",
-  // Timers
-  "timer",
-  "countdown",
-  "derez-timer",
-  // HUD Elements
-  "reticle",
-  "hud-frame",
-  "stat",
-  "speed-indicator",
-  "regen-indicator",
-  "radar",
-  "hud-corner-frame",
-  // Feedback & Alerts
-  "alert-banner",
-  "anomaly-banner",
-  "arrival-panel",
-  // Navigation & Location
-  "location-display",
-  "uplink-header",
-  "beam-marker",
-  "timeline-bar",
-  "video-progress",
-  // Effects
-  "circuit-background",
-  "glow-container",
-  "crt-effect",
-  "grid-scan-overlay",
+// Club activities and learning tracks
+const clubActivities = [
+  // Learning Tracks
+  "web-development",
+  "mobile-development",
+  "machine-learning",
+  "cloud-computing",
+  "devops-practices",
+  "ui-ux-design",
+  // Events
+  "hackathons",
+  "coding-competitions",
+  "tech-workshops",
+  "guest-lectures",
+  "project-showcases",
+  // Community
+  "mentorship-program",
+  "peer-coding-sessions",
+  "open-source-contributions",
+  "interview-prep",
+  // Specializations
+  "data-structures-algorithms",
+  "system-design",
+  "full-stack-development",
+  "game-development",
+  "blockchain-web3",
+  "cybersecurity",
 ];
 
-// Package manager commands
-const packageManagers = [
-  { id: "pnpm", command: "pnpm dlx" },
-  { id: "npm", command: "npx" },
-  { id: "yarn", command: "yarn" },
-  { id: "bun", command: "bunx --bun" },
+// Club platforms
+const clubPlatforms = [
+  { id: "discord", command: "discord.gg/codebreakers", label: "Discord" },
+  { id: "github", command: "github.com/codebreakers-gcek", label: "GitHub" },
+  { id: "linkedin", command: "linkedin.com/company/codebreakers-gcek", label: "LinkedIn" },
+  { id: "instagram", command: "@codebreakers.gcek", label: "Instagram" },
 ] as const;
 
-// Map for O(1) package manager lookups
-const packageManagerById = new Map(packageManagers.map((pm) => [pm.id, pm]));
+// Map for O(1) platform lookups
+const platformById = new Map(clubPlatforms.map((pm) => [pm.id, pm]));
 
 // Map for O(1) theme lookups
 const themeById = new Map(themes.map((t) => [t.id, t]));
@@ -110,11 +98,11 @@ const STATUS_STRIP_FAQ = [
   { label: "STATUS", value: "DECLASSIFIED" },
 ];
 
-// Terminal install component
+// Terminal activity browser component
 function TerminalInstall() {
   const router = useRouter();
-  const [selectedPm, setSelectedPm] =
-    React.useState<(typeof packageManagers)[number]["id"]>("pnpm");
+  const [selectedPlatform, setSelectedPlatform] =
+    React.useState<(typeof clubPlatforms)[number]["id"]>("discord");
   const [isOpen, setIsOpen] = React.useState(false);
   const [copied, setCopied] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -141,8 +129,8 @@ function TerminalInstall() {
 
   const VISIBLE_ITEMS = 5;
 
-  const currentPm = packageManagerById.get(selectedPm) || packageManagers[0];
-  const command = `${currentPm.command} shadcn@latest list @thegridcn`;
+  const currentPlatform = platformById.get(selectedPlatform) || clubPlatforms[0];
+  const command = `Join us: ${currentPlatform.command}`;
 
   const copyCommand = () => {
     navigator.clipboard.writeText(command);
@@ -150,10 +138,10 @@ function TerminalInstall() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Navigate to selected component
-  const navigateToComponent = React.useCallback(() => {
-    const component = availableComponents[selectedIndex];
-    router.push(`/components#${component}`);
+  // Navigate to selected activity
+  const navigateToActivity = React.useCallback(() => {
+    const activity = clubActivities[selectedIndex];
+    router.push(`/events#${activity}`);
   }, [selectedIndex, router]);
 
   // Handle keyboard navigation
@@ -162,7 +150,7 @@ function TerminalInstall() {
       if (e.key === "ArrowDown" || e.key === "j") {
         e.preventDefault();
         setSelectedIndex((prev) => {
-          const next = Math.min(prev + 1, availableComponents.length - 1);
+          const next = Math.min(prev + 1, clubActivities.length - 1);
           // Adjust scroll offset if needed
           if (next >= scrollOffset + VISIBLE_ITEMS) {
             setScrollOffset(next - VISIBLE_ITEMS + 1);
@@ -181,10 +169,10 @@ function TerminalInstall() {
         });
       } else if (e.key === "Enter") {
         e.preventDefault();
-        navigateToComponent();
+        navigateToActivity();
       }
     },
-    [scrollOffset, navigateToComponent],
+    [scrollOffset, navigateToActivity],
   );
 
   // Handle wheel scroll on list - prevent page scroll completely
@@ -195,7 +183,7 @@ function TerminalInstall() {
     setScrollOffset((prev) => {
       const next = Math.max(
         0,
-        Math.min(prev + direction, availableComponents.length - VISIBLE_ITEMS),
+        Math.min(prev + direction, clubActivities.length - VISIBLE_ITEMS),
       );
       return next;
     });
@@ -220,13 +208,13 @@ function TerminalInstall() {
     }
   }, [handleKeyDown, handleWheel]);
 
-  const visibleComponents = availableComponents.slice(
+  const visibleActivities = clubActivities.slice(
     scrollOffset,
     scrollOffset + VISIBLE_ITEMS,
   );
   const hasMoreAbove = scrollOffset > 0;
   const hasMoreBelow =
-    scrollOffset + VISIBLE_ITEMS < availableComponents.length;
+    scrollOffset + VISIBLE_ITEMS < clubActivities.length;
 
   return (
     <div className="relative w-full max-w-2xl">
@@ -253,7 +241,7 @@ function TerminalInstall() {
                 <div className="h-1.5 w-3 bg-primary/60" />
               </div>
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
-                TERMINAL-01.SYS
+                CODEBREAKERS.GCEK.SYS
               </span>
             </div>
 
@@ -266,17 +254,17 @@ function TerminalInstall() {
 
         {/* Content */}
         <div className="relative space-y-3 p-4">
-          {/* Command line with package manager selector */}
+          {/* Command line with platform selector */}
           <div className="flex flex-wrap items-center gap-2 font-mono text-sm">
             <span className="text-primary glow-text">$</span>
 
-            {/* Package manager selector */}
+            {/* Platform selector */}
             <div ref={pmSelectorRef} className="relative">
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex items-center gap-1 border-b border-dashed border-primary/50 text-primary transition-colors hover:border-primary"
               >
-                <span>{currentPm.command}</span>
+                <span>{currentPlatform.label}</span>
                 <svg
                   className={`h-3 w-3 transition-transform ${isOpen ? "rotate-180" : ""}`}
                   fill="none"
@@ -293,21 +281,21 @@ function TerminalInstall() {
               </button>
 
               {isOpen && (
-                <div className="absolute left-0 top-full z-50 mt-1 min-w-[100px] border border-primary/30 bg-panel">
-                  {packageManagers.map((pm) => (
+                <div className="absolute left-0 top-full z-50 mt-1 min-w-[140px] border border-primary/30 bg-panel">
+                  {clubPlatforms.map((platform) => (
                     <button
-                      key={pm.id}
+                      key={platform.id}
                       onClick={() => {
-                        setSelectedPm(pm.id);
+                        setSelectedPlatform(platform.id);
                         setIsOpen(false);
                       }}
                       className={`block w-full px-3 py-1.5 text-left text-xs transition-colors hover:bg-primary/10 ${
-                        selectedPm === pm.id
+                        selectedPlatform === platform.id
                           ? "bg-primary/10 text-primary"
                           : "text-foreground"
                       }`}
                     >
-                      {pm.command}
+                      {platform.label}
                     </button>
                   ))}
                 </div>
@@ -315,8 +303,8 @@ function TerminalInstall() {
             </div>
 
             <code className="text-foreground">
-              shadcn@latest list{" "}
-              <span className="text-primary">@thegridcn</span>
+              visit{" "}
+              <span className="text-primary">{currentPlatform.command}</span>
             </code>
 
             {/* Copy button */}
@@ -357,15 +345,15 @@ function TerminalInstall() {
             </button>
           </div>
 
-          {/* Interactive component selector */}
+          {/* Interactive activity selector */}
           <div className="border-l-2 border-primary/20 pl-3">
             <div className="mb-2 flex items-center justify-between">
               <span className="font-mono text-[10px] uppercase tracking-wider text-primary">
-                ◆ Select component to install{" "}
+                ◆ Explore our programs{" "}
                 <span className="text-foreground/60">(scroll to navigate)</span>
               </span>
               <span className="font-mono text-[10px] text-foreground/60">
-                {selectedIndex + 1}/{availableComponents.length}
+                {selectedIndex + 1}/{clubActivities.length}
               </span>
             </div>
 
@@ -387,13 +375,13 @@ function TerminalInstall() {
 
               {/* Visible items */}
               <div className="space-y-0.5">
-                {visibleComponents.map((comp, idx) => {
+                {visibleActivities.map((activity, idx) => {
                   const actualIndex = scrollOffset + idx;
                   const isSelected = actualIndex === selectedIndex;
                   return (
                     <Link
-                      key={comp}
-                      href={`/components#${comp}`}
+                      key={activity}
+                      href={`/events#${activity}`}
                       onClick={() => setSelectedIndex(actualIndex)}
                       onMouseEnter={() => setSelectedIndex(actualIndex)}
                       className={`flex items-center gap-2 py-1 font-mono text-sm transition-colors ${
@@ -414,7 +402,7 @@ function TerminalInstall() {
                           isSelected ? "underline underline-offset-2" : ""
                         }
                       >
-                        {comp}
+                        {activity}
                       </span>
                       {isSelected && (
                         <span className="ml-auto text-[9px] text-primary/50">
@@ -432,7 +420,7 @@ function TerminalInstall() {
               >
                 <span>↓</span>
                 <span>
-                  {availableComponents.length - scrollOffset - VISIBLE_ITEMS}{" "}
+                  {clubActivities.length - scrollOffset - VISIBLE_ITEMS}{" "}
                   more
                 </span>
               </div>
@@ -443,9 +431,9 @@ function TerminalInstall() {
           <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider">
             <span className="inline-block h-1.5 w-1.5 animate-pulse bg-primary" />
             <span className="text-primary">
-              {availableComponents.length} COMPONENTS READY
+              {clubActivities.length} PROGRAMS ACTIVE
             </span>
-            <span className="text-foreground/60">+ ALL NATIVE SHADCN/UI</span>
+            <span className="text-foreground/60">JOIN ANYTIME</span>
           </div>
         </div>
       </div>
@@ -491,32 +479,9 @@ function FeatureCard({
 export default function Home() {
   const { theme } = useTheme();
   const currentTheme = themeById.get(theme);
-  const [isLoading, setIsLoading] = React.useState(() => {
-    // Only show loading on first visit in this session
-    if (typeof window !== 'undefined') {
-      const hasLoaded = sessionStorage.getItem('hasLoadedOnce');
-      return !hasLoaded;
-    }
-    return true;
-  });
-  const [showContent, setShowContent] = React.useState(false);
-
-  // Show loading screen on first visit
-  if (isLoading) {
-    return <LoadingScreen onLoadingComplete={() => {
-      setIsLoading(false);
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem('hasLoadedOnce', 'true');
-      }
-      // Small delay before showing content with animation
-      setTimeout(() => setShowContent(true), 100);
-    }} />;
-  }
 
   return (
-    <div className={`relative min-h-screen bg-background transition-opacity duration-1000 ${
-      showContent ? 'opacity-100' : 'opacity-0'
-    }`}>
+    <div className="relative min-h-screen bg-background">
       {/* 3D Background */}
       <div className="pointer-events-none fixed inset-0 z-0">
         <Grid3D

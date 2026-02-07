@@ -10,6 +10,3 @@ export { DerezCountdown, DossierCard, GridMap } from "./movie-ui"
 
 // SEO component
 export { JsonLd } from "./json-ld"
-
-// Loading screen
-export { LoadingScreen } from "./loading-screen"
