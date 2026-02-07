@@ -1,0 +1,26 @@
+{
+  "name": "CodeBreakers - Official Coding Club of GCEK",
+  "short_name": "CodeBreakers",
+  "description": "The official coding club of Government College of Engineering Kalahandi. Join us for hackathons, workshops, technical sessions, and collaborative development projects. Fostering innovation and technical excellence.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00e5ff",
+  "icons": [
+    {
+      "src": "/assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/assets/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
