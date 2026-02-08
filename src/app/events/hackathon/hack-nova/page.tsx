@@ -179,6 +179,7 @@ export default function HackNovaPage() {
               </div>
             </GlowContainer>
 
+
             {/* Info Card 3 */}
             <GlowContainer className="group relative border border-primary/30 bg-panel p-6 transition-all hover:border-primary/50 hover:bg-primary/5">
               <div className="crt-scanlines pointer-events-none absolute inset-0 opacity-[0.03]" />

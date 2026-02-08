@@ -20,6 +20,7 @@ image: string;
   url: string;
 }
 
+
 function DeveloperCard({ image, title, subtitle, handle, borderColor, gradient, url }: DeveloperCardProps) {
   return (
     <Link

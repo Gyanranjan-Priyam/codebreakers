@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { themes, useTheme } from "@/components/theme";
 
-
 function MenuIcon({ className }: { className?: string }) {
   return (
     <svg

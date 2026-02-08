@@ -81,6 +81,7 @@ export function TheGridcnLogo({ size = "md", className, showIcon = true }: TheGr
 
   const s = sizeClasses[size]
 
+  
   return (
     <div className={cn("flex items-center", s.gap, className)}>
       {showIcon && <GridIcon className={s.icon} />}

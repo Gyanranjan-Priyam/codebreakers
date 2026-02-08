@@ -48,6 +48,7 @@ export default function IdeathonPage() {
                   </span>
                 </h1>
 
+
                 <div className="h-px w-32 bg-linear-to-r from-primary to-transparent" />
               </div>
 
