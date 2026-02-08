@@ -155,7 +155,7 @@ export default function IdeathonPage() {
                   CODEBREAKERS
                 </p>
                 <p className="font-mono text-xs text-foreground/70">
-                  Government College of Engineering, Kannur
+                  Government College of Engineering, KALAHANDI
                 </p>
               </div>
             </GlowContainer>

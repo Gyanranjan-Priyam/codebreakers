@@ -6,7 +6,7 @@
 
 ---
 
-**Official website for the Codebreakers Coding Club at Government College of Engineering, Kannur**
+**Official website for the Codebreakers Coding Club at Government College of Engineering, KALAHANDI**
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.1-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2-blue?style=flat-square&logo=react)](https://react.dev/)
@@ -21,7 +21,7 @@ _Breaking codes. Building futures._
 
 ## 🌟 Overview
 
-**Codebreakers** is the premier coding club at Government College of Engineering, Kannur (GCEK). This repository contains the source code for our official website, showcasing our team, events, projects, and activities.
+**Codebreakers** is the premier coding club at Government College of Engineering, KALAHANDI (GCEK). This repository contains the source code for our official website, showcasing our team, events, projects, and activities.
 
 The website features a futuristic Tron-inspired design powered by [The GridCN](https://thegridcn.com) UI library, creating an immersive digital experience that reflects our passion for cutting-edge technology.
 
