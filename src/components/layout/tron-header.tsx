@@ -505,7 +505,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
 
               {/* Get Started Button - Desktop */}
               <Link
-                href="/#join"
+                href="https://app.codebreakersgcek.tech/login"
                 className="hidden sm:flex items-center gap-2 rounded border-2 border-primary bg-primary/20 px-4 py-1.5 font-mono text-xs font-bold tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_20px_var(--primary)]"
               >
                 <span>GET STARTED</span>
@@ -866,7 +866,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
 
           {/* Get Started Button - Mobile */}
           <Link
-            href="/#join"
+            href="https://app.codebreakersgcek.tech/login"
             onClick={() => setMobileMenuOpen(false)}
             className="group relative flex items-center justify-center gap-2 overflow-hidden rounded border-2 border-primary bg-primary/20 px-6 py-4 font-mono text-sm font-bold tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground"
           >

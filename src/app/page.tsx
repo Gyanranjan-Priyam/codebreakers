@@ -555,7 +555,7 @@ export default function Home() {
             {/* CTA Buttons */}
             <div className="mb-10 flex flex-wrap justify-center gap-4">
               <Link
-                href="#join"
+                href="https://app.codebreakersgcek.tech/login"
                 className="group relative overflow-hidden rounded border-2 border-primary bg-primary/20 px-10 py-4 font-mono text-sm font-bold tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_40px_var(--primary)]"
               >
                 <span className="relative z-10">JOIN THE COMMUNITY</span>
@@ -1371,7 +1371,7 @@ export default function Home() {
                   projects.
                 </p>
                 <Link
-                  href="/"
+                  href="https://app.codebreakersgcek.tech/login"
                   className="group relative inline-flex overflow-hidden rounded border-2 border-primary bg-primary px-12 py-4 font-mono text-sm font-bold tracking-wider text-primary-foreground transition-all hover:shadow-[0_0_40px_var(--primary)]"
                 >
                   <span className="relative z-10">JOIN NOW</span>

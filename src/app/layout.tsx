@@ -362,7 +362,7 @@ export default function RootLayout({
                   <div className="flex gap-4">
                     {/* LinkedIn */}
                     <a
-                      href="https://linkedin.com"
+                      href="https://linkedin.com/company/codebreakers-gce-kalahandi"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group relative flex h-12 w-12 items-center justify-center border border-primary/30 bg-card/30 backdrop-blur-sm transition-all hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_20px_var(--primary)]"
@@ -380,7 +380,7 @@ export default function RootLayout({
 
                     {/* Instagram */}
                     <a
-                      href="https://instagram.com"
+                      href="https://instagram.com/codebreakersgcek"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group relative flex h-12 w-12 items-center justify-center border border-primary/30 bg-card/30 backdrop-blur-sm transition-all hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_20px_var(--primary)]"
@@ -398,7 +398,7 @@ export default function RootLayout({
 
                     {/* GitHub */}
                     <a
-                      href="https://github.com"
+                      href="https://github.com/codebreakersgcek"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group relative flex h-12 w-12 items-center justify-center border border-primary/30 bg-card/30 backdrop-blur-sm transition-all hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_20px_var(--primary)]"

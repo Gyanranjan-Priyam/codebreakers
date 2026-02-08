@@ -235,7 +235,7 @@ export default function DevelopersPage() {
                   We&apos;re always looking for talented developers to join CodeBreakers
                 </p>
                 <Link
-                  href="/#join"
+                  href="https://app.codebreakersgcek.tech/login"
                   className="inline-flex items-center gap-2 rounded border-2 border-primary bg-primary/20 px-6 py-3 font-mono text-sm font-bold tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_20px_var(--primary)]"
                 >
                   GET STARTED
