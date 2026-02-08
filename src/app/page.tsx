@@ -8,7 +8,6 @@ import { themes, useTheme } from "@/components/theme";
 import {
   Reticle,
   GridScanOverlay,
-  Radar,
 } from "@/components/thegridcn";
 import {
   Accordion,
@@ -17,10 +16,7 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import {
-  ThemeDossierSelector,
   StatusStrip,
-  DerezCountdown,
-  DossierCard,
   GridMap,
 } from "@/components/website";
 import { testimonials } from "@/data";
@@ -63,9 +59,9 @@ const clubActivities = [
 // Club platforms
 const clubPlatforms = [
   { id: "discord", command: "discord.gg/codebreakers", label: "Discord" },
-  { id: "github", command: "github.com/codebreakers-gcek", label: "GitHub" },
-  { id: "linkedin", command: "linkedin.com/company/codebreakers-gcek", label: "LinkedIn" },
-  { id: "instagram", command: "@codebreakers.gcek", label: "Instagram" },
+  { id: "github", command: "github.com/codebreakersgcek", label: "GitHub" },
+  { id: "linkedin", command: "linkedin.com/company/codebreakers-gce-kalahandi", label: "LinkedIn" },
+  { id: "instagram", command: "@codebreakersgcek", label: "Instagram" },
 ] as const;
 
 // Map for O(1) platform lookups
