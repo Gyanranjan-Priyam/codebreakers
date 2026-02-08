@@ -56,6 +56,8 @@ export function TronHeader({ navItems }: TronHeaderProps) {
   const [eventsDropdownOpen, setEventsDropdownOpen] = React.useState(false);
   const [mobileExpandedDevelopers, setMobileExpandedDevelopers] = React.useState(false);
   const [mobileExpandedEvents, setMobileExpandedEvents] = React.useState(false);
+  const [mobileExpandedHackathon, setMobileExpandedHackathon] = React.useState(false);
+  const [hackathonDropdownOpen, setHackathonDropdownOpen] = React.useState(false);
   const { theme, setTheme } = useTheme();
   const themeDropdownRef = React.useRef<HTMLDivElement>(null);
   const developersDropdownRef = React.useRef<HTMLDivElement>(null);
@@ -91,12 +93,16 @@ export function TronHeader({ navItems }: TronHeaderProps) {
   ];
 
   const eventSubmenu = [
-    { href: "/events/workshop", label: "WORKSHOP" },
     { href: "/events/sessions", label: "SESSIONS" },
-    { href: "/events/hackathon", label: "HACKATHON" },
-    { href: "/events/ideathon", label: "IDEATHON" },
     { href: "/events/9-lock-challenges", label: "9-LOCK CHALLENGES" },
     { href: "/events/codecheaf", label: "CODECHEAF" },
+    { href: "/events/ideathon", label: "IDEATHON" },
+    { href: "/events/hackathon", label: "HACKATHON" },
+  ];
+
+  const hackathonSubmenu = [
+    { href: "/events/hackathon/devx", label: "DEVX" },
+    { href: "/events/hackathon/hack-nova", label: "HACK NOVA" },
   ];
 
   const items = navItems || defaultNavItems;
@@ -304,26 +310,104 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                           </div>
                           {/* Menu options */}
                           <div className="p-2">
-                            {eventSubmenu.map((submenu) => (
-                              <Link
-                                key={submenu.href}
-                                href={submenu.href}
-                                onClick={() => setEventsDropdownOpen(false)}
-                                className={cn(
-                                  "block w-full px-3 py-2 text-left font-mono text-xs tracking-wider transition-colors rounded",
-                                  pathname === submenu.href
-                                    ? "bg-primary/10 text-primary"
-                                    : "text-foreground hover:bg-primary/5 hover:text-primary"
-                                )}
-                              >
-                                <div className="flex items-center justify-between">
-                                  <span>{submenu.label}</span>
-                                  {pathname === submenu.href && (
-                                    <span className="font-mono text-[9px] text-primary/50">✓</span>
+                            {eventSubmenu.map((submenu) => {
+                              const isHackathon = submenu.label === "HACKATHON";
+                              const isHackathonActive = pathname.startsWith("/events/hackathon");
+                              
+                              if (isHackathon) {
+                                return (
+                                  <div
+                                    key={submenu.href}
+                                    className="relative"
+                                    onMouseEnter={() => setHackathonDropdownOpen(true)}
+                                    onMouseLeave={() => setHackathonDropdownOpen(false)}
+                                  >
+                                    <button
+                                      className={cn(
+                                        "flex w-full items-center justify-between px-3 py-2 text-left font-mono text-xs tracking-wider transition-colors rounded",
+                                        hackathonDropdownOpen || isHackathonActive
+                                          ? "bg-primary/10 text-primary"
+                                          : "text-foreground hover:bg-primary/5 hover:text-primary"
+                                      )}
+                                    >
+                                      <span>{submenu.label}</span>
+                                      <svg
+                                        className="h-3 w-3 rotate-[-90deg]"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                      >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                      </svg>
+                                    </button>
+                                    
+                                    {/* Hackathon Nested Submenu - Opens to the right */}
+                                    {hackathonDropdownOpen && (
+                                      <div 
+                                        className="absolute left-full top-0 -ml-px w-48 border border-primary/30 bg-panel shadow-lg"
+                                        onMouseEnter={() => setHackathonDropdownOpen(true)}
+                                        onMouseLeave={() => setHackathonDropdownOpen(false)}
+                                      >
+                                        <div className="crt-scanlines pointer-events-none absolute inset-0 opacity-[0.03]" />
+                                        {/* Header */}
+                                        <div className="border-b border-primary/20 bg-primary/5 px-3 py-2">
+                                          <span className="font-mono text-[10px] tracking-widest text-primary">
+                                            HACKATHON
+                                          </span>
+                                        </div>
+                                        {/* Hackathon options */}
+                                        <div className="p-2">
+                                          {hackathonSubmenu.map((hackathon) => (
+                                            <Link
+                                              key={hackathon.href}
+                                              href={hackathon.href}
+                                              onClick={() => {
+                                                setHackathonDropdownOpen(false);
+                                                setEventsDropdownOpen(false);
+                                              }}
+                                              className={cn(
+                                                "block w-full px-3 py-2 text-left font-mono text-xs tracking-wider transition-colors rounded",
+                                                pathname === hackathon.href
+                                                  ? "bg-primary/10 text-primary"
+                                                  : "text-foreground hover:bg-primary/5 hover:text-primary"
+                                              )}
+                                            >
+                                              <div className="flex items-center justify-between">
+                                                <span>{hackathon.label}</span>
+                                                {pathname === hackathon.href && (
+                                                  <span className="font-mono text-[9px] text-primary/50">✓</span>
+                                                )}
+                                              </div>
+                                            </Link>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    )}
+                                  </div>
+                                );
+                              }
+                              
+                              return (
+                                <Link
+                                  key={submenu.href}
+                                  href={submenu.href}
+                                  onClick={() => setEventsDropdownOpen(false)}
+                                  className={cn(
+                                    "block w-full px-3 py-2 text-left font-mono text-xs tracking-wider transition-colors rounded",
+                                    pathname === submenu.href
+                                      ? "bg-primary/10 text-primary"
+                                      : "text-foreground hover:bg-primary/5 hover:text-primary"
                                   )}
-                                </div>
-                              </Link>
-                            ))}
+                                >
+                                  <div className="flex items-center justify-between">
+                                    <span>{submenu.label}</span>
+                                    {pathname === submenu.href && (
+                                      <span className="font-mono text-[9px] text-primary/50">✓</span>
+                                    )}
+                                  </div>
+                                </Link>
+                              );
+                            })}
                           </div>
                         </div>
                       )}
@@ -618,27 +702,93 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                     {/* Submenu */}
                     {mobileExpandedEvents && (
                       <div className="ml-4 flex flex-col gap-1 border-l-2 border-primary/30 pl-3">
-                        {eventSubmenu.map((submenu) => (
-                          <Link
-                            key={submenu.href}
-                            href={submenu.href}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className={cn(
-                              "px-3 py-2 font-mono text-xs tracking-wider transition-colors",
-                              pathname === submenu.href
-                                ? "text-primary"
-                                : "text-foreground/70 hover:text-primary"
-                            )}
-                          >
-                            <div className="flex items-center gap-2">
-                              <span className="text-primary/50">▸</span>
-                              <span>{submenu.label}</span>
-                              {pathname === submenu.href && (
-                                <span className="ml-auto text-[10px] text-primary">ACTIVE</span>
+                        {eventSubmenu.map((submenu) => {
+                          const isHackathon = submenu.label === "HACKATHON";
+                          const isHackathonActive = pathname.startsWith("/events/hackathon");
+                          
+                          if (isHackathon) {
+                            return (
+                              <div key={submenu.href} className="flex flex-col gap-1">
+                                <button
+                                  onClick={() => setMobileExpandedHackathon(!mobileExpandedHackathon)}
+                                  className={cn(
+                                    "px-3 py-2 font-mono text-xs tracking-wider transition-colors text-left",
+                                    isHackathonActive
+                                      ? "text-primary"
+                                      : "text-foreground/70 hover:text-primary"
+                                  )}
+                                >
+                                  <div className="flex items-center gap-2">
+                                    <svg
+                                      className={cn(
+                                        "h-3 w-3 text-primary/50 transition-transform",
+                                        mobileExpandedHackathon ? "rotate-90" : ""
+                                      )}
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                    >
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                    <span>{submenu.label}</span>
+                                    {isHackathonActive && (
+                                      <span className="ml-auto text-[10px] text-primary">ACTIVE</span>
+                                    )}
+                                  </div>
+                                </button>
+                                
+                                {/* Hackathon Nested Submenu */}
+                                {mobileExpandedHackathon && (
+                                  <div className="ml-4 flex flex-col gap-1 border-l-2 border-primary/30 pl-3">
+                                    {hackathonSubmenu.map((hackathon) => (
+                                      <Link
+                                        key={hackathon.href}
+                                        href={hackathon.href}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className={cn(
+                                          "px-3 py-2 font-mono text-xs tracking-wider transition-colors",
+                                          pathname === hackathon.href
+                                            ? "text-primary"
+                                            : "text-foreground/70 hover:text-primary"
+                                        )}
+                                      >
+                                        <div className="flex items-center gap-2">
+                                          <span className="text-primary/50">▸</span>
+                                          <span>{hackathon.label}</span>
+                                          {pathname === hackathon.href && (
+                                            <span className="ml-auto text-[10px] text-primary">ACTIVE</span>
+                                          )}
+                                        </div>
+                                      </Link>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          }
+                          
+                          return (
+                            <Link
+                              key={submenu.href}
+                              href={submenu.href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className={cn(
+                                "px-3 py-2 font-mono text-xs tracking-wider transition-colors",
+                                pathname === submenu.href
+                                  ? "text-primary"
+                                  : "text-foreground/70 hover:text-primary"
                               )}
-                            </div>
-                          </Link>
-                        ))}
+                            >
+                              <div className="flex items-center gap-2">
+                                <span className="text-primary/50">▸</span>
+                                <span>{submenu.label}</span>
+                                {pathname === submenu.href && (
+                                  <span className="ml-auto text-[10px] text-primary">ACTIVE</span>
+                                )}
+                              </div>
+                            </Link>
+                          );
+                        })}
                       </div>
                     )}
                   </div>
