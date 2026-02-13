@@ -25,14 +25,13 @@ export default function AppleIcon() {
           position: 'relative',
         }}
       >
-        {/* Glow effect */}
+        {/* Glow effect - using larger gradient instead of blur for Satori compatibility */}
         <div
           style={{
             position: 'absolute',
-            width: '120px',
-            height: '120px',
-            background: 'radial-gradient(circle, rgba(0, 229, 255, 0.3) 0%, transparent 70%)',
-            filter: 'blur(20px)',
+            width: '160px',
+            height: '160px',
+            background: 'radial-gradient(circle, rgba(0, 229, 255, 0.4) 0%, rgba(0, 229, 255, 0.2) 30%, rgba(0, 229, 255, 0.1) 50%, transparent 70%)',
           }}
         />
 

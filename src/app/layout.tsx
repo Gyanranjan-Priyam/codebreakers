@@ -162,9 +162,6 @@ export default function RootLayout({
     <html lang="en" className={`${orbitron.variable} ${rajdhani.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <head>
         <script id="theme-init" dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <meta name="theme-color" content="#00e5ff" media="(prefers-color-scheme: dark)" />
         <meta name="theme-color" content="#00e5ff" media="(prefers-color-scheme: light)" />
         <script
@@ -451,7 +448,7 @@ export default function RootLayout({
 
                     {/* Instagram */}
                     <a
-                      href="https://instagram.com/gcek.codebreakers"
+                      href="https://www.instagram.com/gcek.codebreakers"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group relative flex h-12 w-12 items-center justify-center border border-primary/30 bg-card/30 backdrop-blur-sm transition-all hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_20px_var(--primary)]"

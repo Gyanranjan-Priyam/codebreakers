@@ -128,10 +128,29 @@ function TerminalInstall() {
   const currentPlatform = platformById.get(selectedPlatform) || clubPlatforms[0];
   const command = `Join us: ${currentPlatform.command}`;
 
-  const copyCommand = () => {
-    navigator.clipboard.writeText(command);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const copyCommand = async () => {
+    try {
+      await navigator.clipboard.writeText(command);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      // Fallback for browsers without clipboard API or insecure contexts
+      const textarea = document.createElement('textarea');
+      textarea.value = command;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (fallbackError) {
+        console.error('Failed to copy:', fallbackError);
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
   };
 
   // Navigate to selected activity
@@ -358,8 +377,6 @@ function TerminalInstall() {
               ref={listRef}
               className="relative select-none outline-none"
               tabIndex={0}
-              onMouseEnter={() => listRef.current?.focus()}
-              onMouseLeave={() => listRef.current?.blur()}
             >
               {/* Scroll up indicator - always reserve space */}
               <div

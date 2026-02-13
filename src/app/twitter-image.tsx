@@ -25,7 +25,7 @@ export default async function Image() {
           fontFamily: 'sans-serif',
         }}
       >
-        {/* Grid pattern background */}
+        {/* Grid pattern background - Satori compatible */}
         <div
           style={{
             position: 'absolute',
@@ -33,23 +33,21 @@ export default async function Image() {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'linear-gradient(0deg, rgba(0, 229, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 255, 0.1) 1px, transparent 1px)',
-            backgroundSize: '50px 50px',
+            backgroundImage: 'repeating-linear-gradient(0deg, rgba(0, 229, 255, 0.1) 0px, rgba(0, 229, 255, 0.1) 1px, transparent 1px, transparent 50px), repeating-linear-gradient(90deg, rgba(0, 229, 255, 0.1) 0px, rgba(0, 229, 255, 0.1) 1px, transparent 1px, transparent 50px)',
             opacity: 0.3,
           }}
         />
 
-        {/* Glow effect */}
+        {/* Glow effect - expanded gradient instead of blur for Satori compatibility */}
         <div
           style={{
             position: 'absolute',
             top: '50%',
             left: '50%',
-            width: '600px',
-            height: '600px',
-            background: 'radial-gradient(circle, rgba(0, 229, 255, 0.3) 0%, transparent 70%)',
+            width: '800px',
+            height: '800px',
+            background: 'radial-gradient(circle, rgba(0, 229, 255, 0.3) 0%, rgba(0, 229, 255, 0.2) 20%, rgba(0, 229, 255, 0.1) 40%, rgba(0, 229, 255, 0.05) 60%, transparent 80%)',
             transform: 'translate(-50%, -50%)',
-            filter: 'blur(60px)',
           }}
         />
 

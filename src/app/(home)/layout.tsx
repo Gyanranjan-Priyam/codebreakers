@@ -5,9 +5,10 @@ export const metadata: Metadata = generateSEO({
   title: 'CodeBreakers - Coding Club | Government College of Engineering Kalahandi',
   description: 'Join CodeBreakers, the premier coding club at Government College of Engineering Kalahandi (GCEK). Learn programming, participate in hackathons, compete in coding challenges, and build innovative projects with a community of 500+ passionate developers.',
   keywords: [
+    // Mix of canonical "CodeBreakers" and lowercase "codebreakers" for search variation coverage
     "CodeBreakers",
     "CodeBreakers GCEK",
-    "Codebreakers GCE Kalahandi",
+    "CodeBreakers GCE Kalahandi",
     "GCEK",
     "GCE Kalahandi",
     "Government College of Engineering Kalahandi",

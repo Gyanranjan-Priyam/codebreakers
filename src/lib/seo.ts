@@ -158,7 +158,7 @@ export function generateEventSchema(event: {
         addressCountry: 'IN',
       },
     },
-    image: event.image ? `${siteConfig.url}${event.image}` : siteConfig.ogImage,
+    image: event.image ? `${siteConfig.url}${event.image}` : `${siteConfig.url}${siteConfig.ogImage}`,
     url: `${siteConfig.url}${event.url}`,
     organizer: {
       '@type': 'Organization',
@@ -259,7 +259,7 @@ export function generateArticleSchema(article: {
     headline: article.title,
     description: article.description,
     url: `${siteConfig.url}${article.url}`,
-    image: article.image ? `${siteConfig.url}${article.image}` : siteConfig.ogImage,
+    image: article.image ? `${siteConfig.url}${article.image}` : `${siteConfig.url}${siteConfig.ogImage}`,
     datePublished: article.datePublished,
     dateModified: article.dateModified || article.datePublished,
     author: {
