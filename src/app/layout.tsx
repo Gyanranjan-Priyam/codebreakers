@@ -105,6 +105,16 @@ export const metadata: Metadata = {
     title: "CodeBreakers GCEK",
     statusBarStyle: "black-translucent",
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/codebreakers-logo.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/codebreakers-logo.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+  },
   robots: {
     index: true,
     follow: true,
