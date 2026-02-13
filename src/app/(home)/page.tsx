@@ -61,7 +61,7 @@ const clubPlatforms = [
   { id: "discord", command: "discord.gg/codebreakers", label: "Discord" },
   { id: "github", command: "github.com/codebreakersgcek", label: "GitHub" },
   { id: "linkedin", command: "linkedin.com/company/codebreakers-gce-kalahandi", label: "LinkedIn" },
-  { id: "instagram", command: "@codebreakersgcek", label: "Instagram" },
+  { id: "instagram", command: "@gcek.codebreakers", label: "Instagram" },
 ] as const;
 
 // Map for O(1) platform lookups

@@ -6,19 +6,23 @@ const siteConfig = {
   url: 'https://www.codebreakersgcek.tech',
   ogImage: '/og-image.png',
   links: {
-    instagram: 'https://www.instagram.com/codebreakers_gcek',
+    instagram: 'https://www.instagram.com/gcek.codebreakers',
     linkedin: 'https://www.linkedin.com/company/codebreakers-gcek',
     github: 'https://github.com/codebreakers-gcek',
+    twitter: 'https://twitter.com/codebreakers_gcek',
   },
 }
 
 export function generateSEO({
   title,
   description,
-  image = siteConfig.ogImage,
+  image,
   url,
   noIndex = false,
   keywords,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
 }: {
   title: string
   description?: string
@@ -26,12 +30,14 @@ export function generateSEO({
   url?: string
   noIndex?: boolean
   keywords?: string[]
+  type?: 'website' | 'article'
+  publishedTime?: string
+  modifiedTime?: string
 }): Metadata {
   const metaTitle = `${title} | ${siteConfig.name}`
   const metaDescription = description || siteConfig.description
   const metaUrl = url ? `${siteConfig.url}${url}` : siteConfig.url
-  const metaImage = image.startsWith('http') ? image : `${siteConfig.url}${image}`
-
+  
   return {
     title,
     description: metaDescription,
@@ -44,23 +50,17 @@ export function generateSEO({
       description: metaDescription,
       url: metaUrl,
       siteName: siteConfig.name,
-      images: [
-        {
-          url: metaImage,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
       locale: 'en_US',
-      type: 'website',
+      type: type,
+      ...(publishedTime && { publishedTime }),
+      ...(modifiedTime && { modifiedTime }),
     },
     twitter: {
       card: 'summary_large_image',
       title: metaTitle,
       description: metaDescription,
-      images: [metaImage],
       creator: '@codebreakers_gcek',
+      site: '@codebreakers_gcek',
     },
     robots: noIndex
       ? {
@@ -78,6 +78,10 @@ export function generateSEO({
             'max-snippet': -1,
           },
         },
+    other: {
+      'theme-color': '#00e5ff',
+      'color-scheme': 'dark light',
+    },
   }
 }
 
@@ -201,6 +205,94 @@ export function generateWebPageSchema(page: {
       '@type': 'WebSite',
       name: siteConfig.name,
       url: siteConfig.url,
+    },
+  }
+}
+
+export function generateCollectionPageSchema(collection: {
+  name: string
+  description: string
+  url: string
+  items: { name: string; url: string }[]
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: collection.name,
+    description: collection.description,
+    url: `${siteConfig.url}${collection.url}`,
+    hasPart: collection.items.map((item) => ({
+      '@type': 'WebPage',
+      name: item.name,
+      url: `${siteConfig.url}${item.url}`,
+    })),
+  }
+}
+
+export function generateFAQSchema(faqs: { question: string; answer: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  }
+}
+
+export function generateArticleSchema(article: {
+  title: string
+  description: string
+  url: string
+  image?: string
+  datePublished: string
+  dateModified?: string
+  author: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.description,
+    url: `${siteConfig.url}${article.url}`,
+    image: article.image ? `${siteConfig.url}${article.image}` : siteConfig.ogImage,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified || article.datePublished,
+    author: {
+      '@type': 'Person',
+      name: article.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.url}/assets/logo.svg`,
+      },
+    },
+  }
+}
+
+export function generateCourseSchema(course: {
+  name: string
+  description: string
+  url: string
+  provider: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: course.name,
+    description: course.description,
+    url: `${siteConfig.url}${course.url}`,
+    provider: {
+      '@type': 'Organization',
+      name: course.provider,
+      sameAs: siteConfig.url,
     },
   }
 }

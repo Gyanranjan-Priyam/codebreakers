@@ -278,7 +278,7 @@ export default function ContactPage() {
                       <Github className="h-5 w-5 text-primary transition-transform group-hover/icon:scale-110" />
                     </a>
                     <a 
-                      href="https://instagram.com/codebreakersgcek" 
+                      href="https://instagram.com/gcek.codebreakers" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="group/icon relative flex h-12 w-12 items-center justify-center border border-primary/30 bg-primary/5 transition-all hover:border-primary hover:bg-primary/20"

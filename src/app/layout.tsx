@@ -37,6 +37,8 @@ export const metadata: Metadata = {
     default: "CodeBreakers - Coding Club | Government College of Engineering Kalahandi"
   },
   description: "Join CodeBreakers, the premier coding club at Government College of Engineering Kalahandi (GCEK). Learn programming, participate in hackathons, compete in coding challenges, and build innovative projects with a community of 500+ passionate developers.",
+  applicationName: "CodeBreakers GCEK",
+  referrer: 'origin-when-cross-origin',
   keywords: [
     "CodeBreakers",
     "CodeBreakers GCEK",
@@ -73,24 +75,15 @@ export const metadata: Metadata = {
     "coding events",
     "best coding club Odisha"
   ],
-  authors: [{ name: "CodeBreakers GCEK" }],
+  authors: [
+    { name: "CodeBreakers GCEK", url: "https://www.codebreakersgcek.tech" }
+  ],
   creator: "CodeBreakers GCEK",
   publisher: "Government College of Engineering Kalahandi",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
-  },
-  icons: {
-    icon: [
-      { url: "/assets/logo.svg", sizes: "any", type: "image/svg+xml" },
-      { url: "/assets/logo.png", sizes: "32x32", type: "image/png" },
-      { url: "/assets/logo.png", sizes: "16x16", type: "image/png" },
-      { url: "/assets/logo.png", sizes: "192x192", type: "image/png" },
-      { url: "/assets/logo.png", sizes: "512x512", type: "image/png" }
-    ],
-    apple: "/assets/logo.png",
-    shortcut: "/assets/logo.svg"
   },
   openGraph: {
     type: "website",
@@ -99,28 +92,27 @@ export const metadata: Metadata = {
     siteName: "CodeBreakers GCEK",
     title: "CodeBreakers - Premier Coding Club at GCEK",
     description: "Join 500+ developers at CodeBreakers, GCEK's leading coding club. Participate in hackathons, competitive programming, and innovative projects. Build your coding skills and network with passionate developers.",
-    images: [
-      {
-        url: "/assets/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "CodeBreakers GCEK Logo",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "CodeBreakers - Premier Coding Club at GCEK",
     description: "Join 500+ developers at CodeBreakers, GCEK's leading coding club. Hackathons, competitive programming, and innovative projects.",
-    images: ["/assets/logo.png"],
     creator: "@codebreakers_gcek",
+    site: "@codebreakers_gcek",
+  },
+  appleWebApp: {
+    capable: true,
+    title: "CodeBreakers GCEK",
+    statusBarStyle: "black-translucent",
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -134,6 +126,10 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   category: "Education",
+  other: {
+    'theme-color': '#00e5ff',
+    'color-scheme': 'dark light',
+  },
 }
 
 // Inline script to prevent theme flash - runs before React hydrates
@@ -166,6 +162,11 @@ export default function RootLayout({
     <html lang="en" className={`${orbitron.variable} ${rajdhani.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <head>
         <script id="theme-init" dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <meta name="theme-color" content="#00e5ff" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#00e5ff" media="(prefers-color-scheme: light)" />
         <script
           id="schema-org"
           type="application/ld+json"
@@ -175,27 +176,97 @@ export default function RootLayout({
               "@graph": [
                 {
                   "@type": "Organization",
+                  "@id": "https://www.codebreakersgcek.tech/#organization",
                   "name": "CodeBreakers GCEK",
                   "alternateName": ["CodeBreakers", "CodeBreakers GCE Kalahandi", "Coding Club of GCE Kalahandi"],
                   "url": "https://www.codebreakersgcek.tech",
-                  "logo": "https://www.codebreakersgcek.tech/assets/logo.svg",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.codebreakersgcek.tech/assets/logo.svg",
+                    "width": 512,
+                    "height": 512,
+                  },
                   "description": "Premier coding club at Government College of Engineering Kalahandi (GCEK) with 500+ members, organizing hackathons, coding competitions, and tech events.",
+                  "foundingDate": "2019",
                   "foundingLocation": {
                     "@type": "Place",
                     "address": {
                       "@type": "PostalAddress",
                       "addressLocality": "Bhawanipatna",
                       "addressRegion": "Kalahandi",
-                      "addressCountry": "India"
+                      "addressCountry": "India",
+                      "postalCode": "766002",
                     }
                   },
                   "parentOrganization": {
                     "@type": "EducationalOrganization",
-                    "name": "Government College of Engineering Kalahandi"
+                    "name": "Government College of Engineering Kalahandi",
+                    "url": "https://www.gcekbpatna.ac.in",
                   },
                   "sameAs": [
-                    "https://www.instagram.com/codebreakers_gcek",
-                    "https://www.linkedin.com/company/codebreakers-gcek"
+                    "https://www.instagram.com/gcek.codebreakers",
+                    "https://www.linkedin.com/company/codebreakers-gce-kalahandi",
+                    "https://github.com/codebreakersgcek",
+                    "https://twitter.com/codebreakers_gcek",
+                  ],
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "email": "info@codebreakers.tech",
+                    "contactType": "General Inquiry",
+                  },
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.codebreakersgcek.tech/#website",
+                  "url": "https://www.codebreakersgcek.tech",
+                  "name": "CodeBreakers GCEK",
+                  "description": "Premier coding club at Government College of Engineering Kalahandi",
+                  "publisher": {
+                    "@id": "https://www.codebreakersgcek.tech/#organization"
+                  },
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                      "@type": "EntryPoint",
+                      "urlTemplate": "https://www.codebreakersgcek.tech/search?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                  },
+                  "inLanguage": "en-US",
+                },
+                {
+                  "@type": "ItemList",
+                  "itemListElement": [
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 1,
+                      "name": "Home",
+                      "url": "https://www.codebreakersgcek.tech"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 2,
+                      "name": "Developers",
+                      "url": "https://www.codebreakersgcek.tech/developers/devs"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 3,
+                      "name": "Events",
+                      "url": "https://www.codebreakersgcek.tech/events"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 4,
+                      "name": "Projects",
+                      "url": "https://www.codebreakersgcek.tech/projects"
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "position": 5,
+                      "name": "Contact",
+                      "url": "https://www.codebreakersgcek.tech/contact"
+                    },
                   ]
                 },
                 {
@@ -380,7 +451,7 @@ export default function RootLayout({
 
                     {/* Instagram */}
                     <a
-                      href="https://instagram.com/codebreakersgcek"
+                      href="https://instagram.com/gcek.codebreakers"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group relative flex h-12 w-12 items-center justify-center border border-primary/30 bg-card/30 backdrop-blur-sm transition-all hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_20px_var(--primary)]"
