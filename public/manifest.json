@@ -13,9 +13,9 @@
   "categories": ["education", "technology", "programming", "community"],
   "icons": [
     {
-      "src": "/assets/logo.svg",
+      "src": "/assets/logo.png",
       "sizes": "any",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any maskable"
     },
     {
@@ -25,7 +25,7 @@
       "purpose": "any maskable"
     },
     {
-      "src": "/assets/logo.png",
+      "src": "/assets/logo-.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

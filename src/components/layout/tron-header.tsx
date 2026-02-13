@@ -142,7 +142,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
             <div className="flex flex-1 justify-start">
               <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
                 <Image
-                  src="/assets/logo.svg"
+                  src="/codebreakers-logo.png"
                   alt="CodeBreakers GCEK Logo"
                   width={40}
                   height={40}

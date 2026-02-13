@@ -96,7 +96,7 @@ export function generateOrganizationSchema() {
       'Coding Club of GCE Kalahandi',
     ],
     url: siteConfig.url,
-    logo: `${siteConfig.url}/assets/logo.svg`,
+    logo: `${siteConfig.url}/assets/codebreakers-logo-main.png`,
     description: siteConfig.description,
     foundingLocation: {
       '@type': 'Place',
@@ -271,7 +271,7 @@ export function generateArticleSchema(article: {
       name: siteConfig.name,
       logo: {
         '@type': 'ImageObject',
-        url: `${siteConfig.url}/assets/logo.svg`,
+        url: `${siteConfig.url}/assets/logo.png`,
       },
     },
   }

@@ -179,7 +179,7 @@ export default function RootLayout({
                   "url": "https://www.codebreakersgcek.tech",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "https://www.codebreakersgcek.tech/assets/logo.svg",
+                    "url": "https://www.codebreakersgcek.tech/assets/logo.png",
                     "width": 512,
                     "height": 512,
                   },
@@ -404,7 +404,7 @@ export default function RootLayout({
                   {/* Logo and Text */}
                   <div className="relative flex flex-col items-center gap-4">
                     <Image
-                      src="/assets/logo.svg"
+                      src="/assets/codebreakers-logo-main.png"
                       alt="CodeBreakers GCEK Logo"
                       width={80}
                       height={80}
