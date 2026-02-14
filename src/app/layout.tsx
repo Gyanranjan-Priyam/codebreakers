@@ -213,7 +213,7 @@ export default function RootLayout({
                   "sameAs": [
                     "https://www.instagram.com/gcek.codebreakers",
                     "https://www.linkedin.com/company/codebreakers-gce-kalahandi",
-                    "https://github.com/codebreakersgcek",
+                    "https://github.com/codebreakers-gcek",
                     "https://twitter.com/codebreakers_gcek",
                   ],
                   "contactPoint": {
@@ -476,7 +476,7 @@ export default function RootLayout({
 
                     {/* GitHub */}
                     <a
-                      href="https://github.com/codebreakersgcek"
+                      href="https://github.com/codebreakers-gcek"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group relative flex h-12 w-12 items-center justify-center border border-primary/30 bg-card/30 backdrop-blur-sm transition-all hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_20px_var(--primary)]"

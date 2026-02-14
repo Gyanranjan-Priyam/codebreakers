@@ -270,7 +270,7 @@ export default function ContactPage() {
                       <FaDiscord className="h-5 w-5 text-primary transition-transform group-hover/icon:scale-110" />
                     </a>
                     <a 
-                      href="https://github.com/codebreakersgcek" 
+                      href="https://github.com/codebreakers-gcek" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="group/icon relative flex h-12 w-12 items-center justify-center border border-primary/30 bg-primary/5 transition-all hover:border-primary hover:bg-primary/20"

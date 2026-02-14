@@ -59,7 +59,7 @@ const clubActivities = [
 // Club platforms
 const clubPlatforms = [
   { id: "discord", command: "discord.gg/codebreakers", label: "Discord" },
-  { id: "github", command: "github.com/codebreakersgcek", label: "GitHub" },
+  { id: "github", command: "github.com/codebreakers-gcek", label: "GitHub" },
   { id: "linkedin", command: "linkedin.com/company/codebreakers-gce-kalahandi", label: "LinkedIn" },
   { id: "instagram", command: "@gcek.codebreakers", label: "Instagram" },
 ] as const;
