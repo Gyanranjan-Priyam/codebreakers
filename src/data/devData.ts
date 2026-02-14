@@ -15,7 +15,7 @@ export const coreMembers = [
     handle: "@chayakanta",
     borderColor: "#10B981",
     gradient: "linear-gradient(180deg, #10B981, #000)",
-    url: "https://linkedin.com/in/mikechen"
+    url: "https://www.linkedin.com/in/chhayakanta-maharana-a231a2298"
   },
   {
     image: "https://res.cloudinary.com/dw47ib0sh/image/upload/v1764688696/aixxacrlbbdoabw4amfc.jpg",
@@ -58,8 +58,8 @@ export const coordinators = [
     url: "https://github.com/madan1500"
   },
   {
-    image: "https://res.cloudinary.com/dw47ib0sh/image/upload/v1764688884/xvcj3svedzh35giuopjm.jpg",
-    title: "Krishidev Gosh",
+    image: "https://res.cloudinary.com/dw47ib0sh/image/upload/v1771061008/upd5kxafc74frofgmo58.jpg",
+    title: "Krishidev Ghosh",
     subtitle: "Technical Coordinator",
     handle: "_krishidev_",
     borderColor: "#10B981",
