@@ -50,3 +50,8 @@ export const NineLockChallengeImageLinks = [
   "https://res.cloudinary.com/dw47ib0sh/image/upload/v1770561037/IMG_0419_jghrm5.jpg",
   "https://res.cloudinary.com/dw47ib0sh/image/upload/v1770561037/IMG_0413_lwvjbt.jpg",
 ];
+
+export const DevXImageLinks = [
+  // Placeholder image - will be updated when photos are available
+  "https://res.cloudinary.com/dw47ib0sh/image/upload/v1771086783/fxdvrtammhsp8hz80ldm.png",
+]
