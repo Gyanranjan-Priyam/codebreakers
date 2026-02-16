@@ -95,7 +95,7 @@ export default function DevXPage() {
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4">
-                <Link href="#register" className="group relative inline-block">
+                <Link href="https://drive.google.com/drive/folders/1e-GWWtrRuA1paMuF-J4nepd7G7RjAL0R?usp=sharing" className="group relative inline-block">
                   <Button
                     size="lg"
                     className="cursor-pointer group relative overflow-hidden border-2 border-primary bg-primary/20 font-mono text-sm font-bold tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_30px_var(--primary)]"
@@ -300,7 +300,7 @@ export default function DevXPage() {
                                 // Add your download logic here
                                 // For now, it will open a link or trigger a download
                                 const link = document.createElement('a');
-                                link.href = '/path-to-your-template.pptx'; // Update with actual path
+                                link.href = 'https://drive.google.com/drive/folders/14FJDIIh1xSKRrIXe1W6i1p6LR34lSOu9?usp=sharing'; // Update with actual path
                                 link.download = 'DevX_Presentation_Template.pptx';
                                 link.click();
                               }}
