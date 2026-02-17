@@ -1344,6 +1344,70 @@
 }
 
 /* ==========================================
+   LOADER COMPONENT
+   ========================================== */
+
+/* Loader ring glows based on intensity */
+[data-tron-intensity="light"] .tron-loader-ring-outer,
+[data-tron-intensity="light"] .tron-loader-ring-middle,
+[data-tron-intensity="light"] .tron-loader-ring-inner {
+  box-shadow: 0 0 var(--tron-glow-spread-sm) var(--glow);
+}
+
+[data-tron-intensity="medium"] .tron-loader-ring-outer {
+  box-shadow: 0 0 var(--tron-glow-spread-md) var(--glow),
+              0 0 var(--tron-glow-spread-lg) color-mix(in oklch, var(--glow-muted) 40%, transparent);
+}
+
+[data-tron-intensity="medium"] .tron-loader-ring-middle {
+  box-shadow: 0 0 var(--tron-glow-spread-sm) var(--glow),
+              0 0 var(--tron-glow-spread-md) color-mix(in oklch, var(--glow-muted) 50%, transparent);
+}
+
+[data-tron-intensity="medium"] .tron-loader-ring-inner {
+  box-shadow: 0 0 var(--tron-glow-spread-sm) var(--glow);
+}
+
+[data-tron-intensity="heavy"] .tron-loader-ring-outer {
+  box-shadow: 0 0 var(--tron-glow-spread-md) var(--glow),
+              0 0 var(--tron-glow-spread-lg) var(--glow),
+              0 0 var(--tron-glow-spread-xl) color-mix(in oklch, var(--glow-muted) 30%, transparent);
+  animation: tron-glow-pulse 2s ease-in-out infinite;
+}
+
+[data-tron-intensity="heavy"] .tron-loader-ring-middle {
+  box-shadow: 0 0 var(--tron-glow-spread-md) var(--glow),
+              0 0 var(--tron-glow-spread-lg) color-mix(in oklch, var(--glow-muted) 50%, transparent);
+}
+
+[data-tron-intensity="heavy"] .tron-loader-ring-inner {
+  box-shadow: 0 0 var(--tron-glow-spread-sm) var(--glow),
+              0 0 var(--tron-glow-spread-md) var(--glow);
+}
+
+/* Core pulse glow */
+[data-tron-intensity="light"] .tron-loader-core {
+  box-shadow: 0 0 var(--tron-glow-spread-sm) var(--glow);
+}
+
+[data-tron-intensity="medium"] .tron-loader-core {
+  box-shadow: 0 0 var(--tron-glow-spread-sm) var(--glow),
+              0 0 var(--tron-glow-spread-md) color-mix(in oklch, var(--glow) 60%, transparent);
+}
+
+[data-tron-intensity="heavy"] .tron-loader-core {
+  box-shadow: 0 0 var(--tron-glow-spread-md) var(--glow),
+              0 0 var(--tron-glow-spread-lg) var(--glow),
+              0 0 var(--tron-glow-spread-xl) color-mix(in oklch, var(--glow) 40%, transparent);
+}
+
+/* Loader label text glow */
+[data-tron-intensity="medium"] .tron-loader-label,
+[data-tron-intensity="heavy"] .tron-loader-label {
+  text-shadow: 0 0 var(--tron-glow-spread-sm) color-mix(in oklch, var(--glow) 30%, transparent);
+}
+
+/* ==========================================
    OPT-OUT SELECTOR
    ========================================== */
 

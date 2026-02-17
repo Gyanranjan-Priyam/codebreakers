@@ -3,7 +3,7 @@ import Image from "next/image"
 import { Geist_Mono, Orbitron, Rajdhani } from "next/font/google"
 import { ThemeProvider } from "@/components/theme"
 import { Toaster } from "@/components/ui/sonner"
-import { TronHeader } from "@/components/layout"
+import { TronHeader, TronSplashLoader } from "@/components/layout"
 import { UplinkHeader } from "@/components/thegridcn"
 import "./globals.css"
 import "@/styles/tron-style.css"
@@ -352,6 +352,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ThemeProvider>
+          <TronSplashLoader />
           <TronHeader />
           <main>
             {children}

@@ -14,6 +14,7 @@ export { StatusBar, InfoPanel, UplinkBar, ProgressTimeline } from "./status-bar"
 export { Radar } from "./radar"
 export { MapMarker } from "./map-marker"
 export { CoordinateDisplay } from "./coordinate-display"
+export { Loader, LoaderOverlay, LoaderSpinner } from "./loader"
 
 // 3D Components
 export { Grid3D } from "./grid"
