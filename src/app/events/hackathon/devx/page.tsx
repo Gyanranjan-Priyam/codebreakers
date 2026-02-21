@@ -117,8 +117,8 @@ export default function DevXPage() {
                       VIEW DETAILS
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-7xl w-[98vw] sm:w-[95vw] lg:w-[90vw] max-h-[75vh] overflow-y-auto border-primary/30 bg-panel">
-                    <DialogHeader>
+                  <DialogContent className="max-w-7xl w-[98vw] sm:w-[95vw] lg:w-[90vw] max-h-[85vh] flex flex-col border-primary/30 bg-panel">
+                    <DialogHeader className="shrink-0">
                       <DialogTitle className="font-display text-2xl font-bold tracking-wider text-foreground">
                         DEVX{" "}
                         <span className="text-primary [text-shadow:0_0_20px_oklch(from_var(--primary)_l_c_h/0.6)]">
@@ -130,7 +130,7 @@ export default function DevXPage() {
                       </DialogDescription>
                     </DialogHeader>
 
-                    <div className="space-y-6 py-4">
+                    <div className="space-y-6 py-4 overflow-y-auto min-h-0 flex-1 scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                       {/* Rules Section - Accordion */}
                       <Accordion type="single" collapsible className="space-y-2">
                         {/* General Rules */}
