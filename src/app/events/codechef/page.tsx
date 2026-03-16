@@ -1,6 +1,5 @@
 "use client";
 
-
 import * as React from "react";
 import Image from "next/image";
 import {
@@ -11,9 +10,9 @@ import {
   Stat,
   StatusBar,
 } from "@/components/thegridcn";
-import { CodeCheafImageLinks } from "@/data/galleryItems";
+import { CodeCHEFImageLinks } from "@/data/galleryItems";
 
-export default function CodeCheafPage() {
+export default function CodeCHEFPage() {
   return (
     <div className="relative min-h-screen bg-background">
       {/* CRT Effect Overlay */}
@@ -43,7 +42,7 @@ export default function CodeCheafPage() {
                 <h1 className="font-display text-5xl font-bold tracking-wider text-foreground lg:text-6xl">
                   CODE
                   <span className="text-primary [text-shadow:0_0_30px_oklch(from_var(--primary)_l_c_h/0.6)]">
-                    CHEAF
+                    CHEF
                   </span>
                 </h1>
 
@@ -55,7 +54,7 @@ export default function CodeCheafPage() {
                 <p className="font-mono text-sm leading-relaxed text-foreground/80">
                   Test your coding skills in our competitive programming event.
                   Solve challenging algorithmic problems, compete with fellow
-                  coders, and climb the leaderboard. CodeCheaf is designed to
+                  coders, and climb the leaderboard. CodeCHEF is designed to
                   sharpen your problem-solving abilities and algorithmic
                   thinking in a time-bound competitive environment.
                 </p>
@@ -80,7 +79,7 @@ export default function CodeCheafPage() {
               <div className="relative h-full overflow-hidden rounded-sm border border-primary/30 bg-background/50 backdrop-blur-sm">
                 <Image
                   src="https://res.cloudinary.com/dw47ib0sh/image/upload/v1764668106/ycy9dx5ijvkjkc2ldjkw.jpg"
-                  alt="CodeCheaf Event"
+                  alt="CodeCHEF Event"
                   fill
                   className="object-cover"
                   priority
@@ -95,7 +94,7 @@ export default function CodeCheafPage() {
                 <div className="absolute -right-px -top-px h-4 w-4 border-r-2 border-t-2 border-primary" />
                 <div className="absolute -bottom-px -left-px h-4 w-4 border-b-2 border-l-2 border-primary" />
                 <div className="absolute -bottom-px -right-px h-4 w-4 border-b-2 border-r-2 border-primary" />
-                
+
                 {/* Inner corner accents */}
                 <div className="absolute left-2 top-2 h-4 w-4 border-l-2 border-t-2 border-primary" />
                 <div className="absolute right-2 top-2 h-4 w-4 border-r-2 border-t-2 border-primary" />
@@ -196,8 +195,18 @@ export default function CodeCheafPage() {
                 description:
                   "Enhance your algorithmic thinking and problem-solving skills. Face diverse challenges ranging from easy to advanced difficulty levels.",
                 icon: (
-                  <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                  <svg
+                    className="h-6 w-6 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+                    />
                   </svg>
                 ),
               },
@@ -206,8 +215,18 @@ export default function CodeCheafPage() {
                 description:
                   "Build confidence in competitive programming. Prepare for technical interviews and coding competitions at national and international levels.",
                 icon: (
-                  <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  <svg
+                    className="h-6 w-6 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
                   </svg>
                 ),
               },
@@ -216,8 +235,18 @@ export default function CodeCheafPage() {
                 description:
                   "Track your performance on live leaderboards. Compete with peers and see where you stand in real-time as you solve problems.",
                 icon: (
-                  <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  <svg
+                    className="h-6 w-6 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    />
                   </svg>
                 ),
               },
@@ -226,8 +255,18 @@ export default function CodeCheafPage() {
                 description:
                   "Win exciting prizes for top performances. Get certificates and recognition for your coding excellence and achievements.",
                 icon: (
-                  <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                  <svg
+                    className="h-6 w-6 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
+                    />
                   </svg>
                 ),
               },
@@ -264,48 +303,45 @@ export default function CodeCheafPage() {
       </section>
 
       {/* Gallery Section */}
-      {CodeCheafImageLinks.length > 0 ? (
+      {CodeCHEFImageLinks.length > 0 ? (
         <section className="relative border-b border-primary/30 bg-background py-16 overflow-hidden">
           <div className="container mx-auto px-4">
-            <UplinkHeader
-              leftText="PAST CONTESTS"
-              rightText="MEMORY ARCHIVE"
-            />
+            <UplinkHeader leftText="PAST CONTESTS" rightText="MEMORY ARCHIVE" />
 
             <div className="mt-12 relative">
               {/* Marquee Container */}
               <div className="relative overflow-hidden">
                 <div className="flex gap-4 animate-marquee">
                   {/* First set of images */}
-                  {CodeCheafImageLinks.map((imageUrl, index) => (
+                  {CodeCHEFImageLinks.map((imageUrl, index) => (
                     <div
                       key={`first-${index}`}
                       className="group relative flex-shrink-0 overflow-hidden"
-                      style={{ width: '320px', height: '320px' }}
+                      style={{ width: "320px", height: "320px" }}
                     >
                       {/* Image Container */}
                       <div className="relative h-full w-full border border-primary/30 bg-background/50 backdrop-blur-sm transition-all duration-300 group-hover:border-primary/70 group-hover:shadow-[0_0_20px_var(--primary)]">
                         <Image
                           src={imageUrl}
-                          alt={`CodeCheaf Memory ${index + 1}`}
+                          alt={`CodeCHEF Memory ${index + 1}`}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
                           sizes="320px"
                           unoptimized
                         />
-                        
+
                         {/* Gradient Overlay */}
                         <div className="absolute inset-0 bg-linear-to-t from-background/90 via-background/20 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-30" />
-                        
+
                         {/* HUD Corner Markers */}
                         <div className="absolute -left-px -top-px h-3 w-3 border-l-2 border-t-2 border-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="absolute -right-px -top-px h-3 w-3 border-r-2 border-t-2 border-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="absolute -bottom-px -left-px h-3 w-3 border-b-2 border-l-2 border-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="absolute -bottom-px -right-px h-3 w-3 border-b-2 border-r-2 border-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                        
+
                         {/* Scanline Effect on Hover */}
                         <div className="crt-scanlines pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-[0.05]" />
-                        
+
                         {/* Index Number */}
                         <div className="absolute bottom-2 left-2 font-mono text-xs tracking-wider text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                           #{String(index + 1).padStart(2, "0")}
@@ -314,35 +350,35 @@ export default function CodeCheafPage() {
                     </div>
                   ))}
                   {/* Duplicate set for seamless loop */}
-                  {CodeCheafImageLinks.map((imageUrl, index) => (
+                  {CodeCHEFImageLinks.map((imageUrl, index) => (
                     <div
                       key={`second-${index}`}
                       className="group relative flex-shrink-0 overflow-hidden"
-                      style={{ width: '320px', height: '320px' }}
+                      style={{ width: "320px", height: "320px" }}
                     >
                       {/* Image Container */}
                       <div className="relative h-full w-full border border-primary/30 bg-background/50 backdrop-blur-sm transition-all duration-300 group-hover:border-primary/70 group-hover:shadow-[0_0_20px_var(--primary)]">
                         <Image
                           src={imageUrl}
-                          alt={`CodeCheaf Memory ${index + 1}`}
+                          alt={`CodeCHEF Memory ${index + 1}`}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
                           sizes="320px"
                           unoptimized
                         />
-                        
+
                         {/* Gradient Overlay */}
                         <div className="absolute inset-0 bg-linear-to-t from-background/90 via-background/20 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-30" />
-                        
+
                         {/* HUD Corner Markers */}
                         <div className="absolute -left-px -top-px h-3 w-3 border-l-2 border-t-2 border-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="absolute -right-px -top-px h-3 w-3 border-r-2 border-t-2 border-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="absolute -bottom-px -left-px h-3 w-3 border-b-2 border-l-2 border-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         <div className="absolute -bottom-px -right-px h-3 w-3 border-b-2 border-r-2 border-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                        
+
                         {/* Scanline Effect on Hover */}
                         <div className="crt-scanlines pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-[0.05]" />
-                        
+
                         {/* Index Number */}
                         <div className="absolute bottom-2 left-2 font-mono text-xs tracking-wider text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                           #{String(index + 1).padStart(2, "0")}
@@ -362,7 +398,7 @@ export default function CodeCheafPage() {
             <div className="mt-8 border border-primary/30 bg-primary/5 p-4">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-xs tracking-widest text-foreground/70">
-                  ARCHIVE: {CodeCheafImageLinks.length} MEMORIES LOADED
+                  ARCHIVE: {CodeCHEFImageLinks.length} MEMORIES LOADED
                 </span>
                 <div className="flex items-center gap-2">
                   <div className="h-2 w-2 animate-pulse rounded-full bg-primary" />
@@ -397,25 +433,33 @@ export default function CodeCheafPage() {
       ) : (
         <section className="relative border-b border-primary/30 bg-background py-16">
           <div className="container mx-auto px-4">
-            <UplinkHeader
-              leftText="PAST CONTESTS"
-              rightText="MEMORY ARCHIVE"
-            />
+            <UplinkHeader leftText="PAST CONTESTS" rightText="MEMORY ARCHIVE" />
 
             <div className="mt-12">
               <GlowContainer className="border border-primary/30 bg-panel p-12 text-center">
                 <div className="crt-scanlines pointer-events-none absolute inset-0 opacity-[0.03]" />
                 <div className="relative space-y-4">
                   <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 border-primary/30 bg-primary/10">
-                    <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <svg
+                      className="h-8 w-8 text-primary"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
                     </svg>
                   </div>
                   <h3 className="font-mono text-lg tracking-wider text-primary">
                     ARCHIVE LOADING...
                   </h3>
                   <p className="font-mono text-xs text-foreground/70">
-                    Contest memories will be uploaded soon. Stay tuned for updates!
+                    Contest memories will be uploaded soon. Stay tuned for
+                    updates!
                   </p>
                   <div className="flex items-center justify-center gap-2 pt-4">
                     <div className="h-2 w-2 animate-pulse rounded-full bg-primary" />
@@ -433,7 +477,7 @@ export default function CodeCheafPage() {
       {/* Info Section */}
       <section className="relative bg-panel py-16">
         <div className="crt-scanlines pointer-events-none absolute inset-0 opacity-[0.03]" />
-        
+
         <div className="container relative mx-auto px-4 text-center">
           <div className="mx-auto max-w-2xl space-y-8">
             <h2 className="font-display text-3xl font-bold tracking-wider text-foreground lg:text-4xl">
@@ -444,14 +488,14 @@ export default function CodeCheafPage() {
             </h2>
 
             <p className="font-mono text-sm text-foreground/70">
-              Join CodeCheaf and test your coding skills against the best.
-              Follow us for upcoming contest announcements and schedules!
+              Join CodeCHEF and test your coding skills against the best. Follow
+              us for upcoming contest announcements and schedules!
             </p>
 
             <StatusBar
               leftContent={
                 <>
-                  <span className="text-primary">EVENT: CODECHEAF</span>
+                  <span className="text-primary">EVENT: CODECHEF</span>
                   <span className="text-foreground/60">|</span>
                   <span>STATUS: ACTIVE</span>
                 </>

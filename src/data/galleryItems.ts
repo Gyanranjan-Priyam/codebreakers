@@ -29,7 +29,7 @@ export const SessionImageLinks = [
   "https://res.cloudinary.com/dw47ib0sh/image/upload/v1770558542/mwirhmediwwwk74j1oqo.jpg",
 ];
 
-export const CodeCheafImageLinks = [
+export const CodeCHEFImageLinks = [
   "https://res.cloudinary.com/dw47ib0sh/image/upload/v1770559672/IMG_0315_en9ozo.jpg",
   "https://res.cloudinary.com/dhyxx8qjf/image/upload/v1764750840/IMG-20250311-WA0098_k159km.jpg",
   "https://res.cloudinary.com/dw47ib0sh/image/upload/v1764668106/ycy9dx5ijvkjkc2ldjkw.jpg",
@@ -54,4 +54,4 @@ export const NineLockChallengeImageLinks = [
 export const DevXImageLinks = [
   // Placeholder image - will be updated when photos are available
   "https://res.cloudinary.com/dw47ib0sh/image/upload/v1771086783/fxdvrtammhsp8hz80ldm.png",
-]
+];

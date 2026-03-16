@@ -88,19 +88,17 @@ export function TronHeader({ navItems }: TronHeaderProps) {
   const developerSubmenu = [
     { href: "/developers/alumni", label: "ALUMNI" },
     { href: "/developers/devs", label: "DEVS" },
-    { href: "/developers/teams", label: "TEAMS" },
   ];
 
   const eventSubmenu = [
     { href: "/events/sessions", label: "SESSIONS" },
     { href: "/events/9-lock-challenges", label: "9-LOCK CHALLENGES" },
-    { href: "/events/codecheaf", label: "CODECHEAF" },
+    { href: "/events/codechef", label: "CODECHEF" },
     { href: "/events/ideathon", label: "IDEATHON" },
     { href: "/events/hackathon", label: "HACKATHON" },
   ];
 
   const hackathonSubmenu = [
-    { href: "/events/hackathon/devx", label: "DEVX" },
     { href: "/events/hackathon/hack-nova", label: "HACK NOVA" },
   ];
 

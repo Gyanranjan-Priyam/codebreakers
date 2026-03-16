@@ -86,7 +86,7 @@ codebreakers-web/
 │   │   │   └── teams/           # Team structure
 │   │   ├── events/              # Events pages
 │   │   │   ├── 9-lock-challenges/
-│   │   │   ├── codecheaf/
+│   │   │   ├── codeCHEF/
 │   │   │   ├── hackathon/
 │   │   │   ├── ideathon/
 │   │   │   ├── sessions/
@@ -118,7 +118,7 @@ codebreakers-web/
 ### Main Pages
 
 - **Home** (`/`) - Landing page with club overview and highlights
-- **Developers** 
+- **Developers**
   - `/developers/devs` - Current team members
   - `/developers/teams` - Team structure
   - `/developers/alumni` - Alumni network
@@ -127,7 +127,7 @@ codebreakers-web/
   - `/events/ideathon` - Ideathon details
   - `/events/workshop` - Workshop series
   - `/events/sessions` - Coding sessions
-  - `/events/codecheaf` - CodeCheaf events
+  - `/events/codeCHEF` - CodeCHEF events
   - `/events/9-lock-challenges` - 9-Lock coding challenges
 - **Projects** (`/projects`) - Showcase of club projects
 - **Contact** (`/contact`) - Get in touch with the team
@@ -148,6 +148,7 @@ The website is built using [The GridCN](https://thegridcn.com) - a Tron-inspired
 | **Poseidon**  | Blue (#0066ff)   | God of Sea                    |
 
 Each theme includes:
+
 - Custom color palettes with OKLCH color space
 - Neon glow effects matching the theme color
 - 3D grid effects and HUD elements
@@ -156,22 +157,26 @@ Each theme includes:
 ## 🎯 Features
 
 ### Team Management
+
 - **Core Members** - Secretary, Assistant Secretary, Treasurer
 - **Coordinators** - Technical and Event coordinators
 - **Alumni Network** - Showcase of past members
 - Dynamic team cards with profiles and social links
 
 ### Events System
+
 - Multi-event support (Hackathons, Ideathons, Workshops, Sessions)
 - Event details and registration information
 - Past event archives
 
 ### Projects Showcase
+
 - Gallery of club projects
 - Project details and documentation
 - Team member contributions
 
 ### Interactive UI
+
 - 3D grid backgrounds with Three.js
 - Tron-style data cards and HUD elements
 - Animated transitions and hover effects
@@ -205,7 +210,7 @@ export const coreMembers = [
     handle: "@yourhandle",
     borderColor: "#3B82F6",
     gradient: "linear-gradient(145deg, #3B82F6, #000)",
-    url: "https://your-portfolio.com"
+    url: "https://your-portfolio.com",
   },
   // Add more members...
 ];
@@ -299,11 +304,13 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 👥 Team
 
 ### Core Members
+
 - **Secretary** - Podili Biswajit
 - **Assistant Secretary** - Chayakanta Maharana
 - **Treasurer** - Sambhunath Meher
 
 ### Coordinators
+
 - **Motivator & Event Coordinator** - R. Pradyota Reddy
 - **Technical Coordinator** - Biplab Jena
 
