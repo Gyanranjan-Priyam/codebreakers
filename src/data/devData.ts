@@ -51,7 +51,7 @@ export const coordinators = [
    {
     image: "https://res.cloudinary.com/dw47ib0sh/image/upload/v1764687876/y80btmy7yo95oul1thyz.jpg",
     title: "Madan Mohan Behera",
-    subtitle: "App Developer Coordinator",
+    subtitle: "App Developer",
     handle: "@madan1500",
     borderColor: "#10B981",
     gradient: "linear-gradient(215deg,#06B6D4,#000)",
@@ -87,7 +87,7 @@ export const coordinators = [
   {
     image: "https://res.cloudinary.com/dw47ib0sh/image/upload/v1764686998/qqpuw8paqkzjx0iqv9vd.jpg",
     title: "Deepankar Sahoo",
-    subtitle: "Technical Coordinator",
+    subtitle: "Full Stack Developer",
     handle: "@codebydeepankar",
     borderColor: "#06B6D4",
     gradient: "linear-gradient(135deg,#06B6D4,#000)",
@@ -96,7 +96,7 @@ export const coordinators = [
   {
     image: "https://res.cloudinary.com/dw47ib0sh/image/upload/v1764687111/dcamoaxh8imtoetrydzn.jpg",
     title: "Smruti Ranjan Adhikari",
-    subtitle: "Content Coordinator",
+    subtitle: "Content Writer",
     handle: "@Smrutiranjan8895",
     borderColor: "#F59E0B",
     gradient: "linear-gradient(145deg, #F59E0B, #000)",
@@ -105,7 +105,7 @@ export const coordinators = [
   {
     image: "https://res.cloudinary.com/dw47ib0sh/image/upload/v1764687223/kd4jrgwjj643pwyu8mcs.jpg",
     title: "Swastik Kumar Purohit",
-    subtitle: "Operations Coordinator",
+    subtitle: "Design Team Lead",
     handle: "@Swastik-purohit-coder",
     borderColor: "#EF4444",
     gradient: "linear-gradient(180deg, #EF4444, #000)",
