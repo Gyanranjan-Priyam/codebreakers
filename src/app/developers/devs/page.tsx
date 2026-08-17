@@ -242,7 +242,7 @@ export default function DevelopersPage() {
               </div>
               
               <h1 className="relative px-12 py-6 font-mono text-4xl font-bold tracking-wider text-primary sm:text-5xl md:text-6xl">
-                OUR DEVELOPERS
+                THE MINDS BEHIND THE CODE
               </h1>
             </div>
             

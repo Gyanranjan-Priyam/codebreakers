@@ -5,6 +5,8 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { themes, useTheme } from "@/components/theme";
+import { cn } from "@/lib/utils";
+import { Cpu, Trophy, Terminal, GitBranch, ArrowRight } from "lucide-react";
 import {
   Reticle,
   GridScanOverlay,
@@ -354,86 +356,6 @@ function TerminalInstall() {
             </button>
           </div>
 
-          {/* Interactive activity selector */}
-          <div className="border-l-2 border-primary/20 pl-3">
-            <div className="mb-2 flex items-center justify-between">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-primary">
-                ◆ Explore our programs{" "}
-                <span className="text-foreground/60">(scroll to navigate)</span>
-              </span>
-              <span className="font-mono text-[10px] text-foreground/60">
-                {selectedIndex + 1}/{clubActivities.length}
-              </span>
-            </div>
-
-            {/* Scrollable list */}
-            <div
-              ref={listRef}
-              className="relative select-none outline-none"
-              tabIndex={0}
-            >
-              {/* Scroll up indicator - always reserve space */}
-              <div
-                className={`flex items-center gap-2 py-1 font-mono text-[11px] ${hasMoreAbove ? "text-foreground/40" : "invisible"}`}
-              >
-                <span>↑</span>
-                <span>{scrollOffset} more</span>
-              </div>
-
-              {/* Visible items */}
-              <div className="space-y-0.5">
-                {visibleActivities.map((activity, idx) => {
-                  const actualIndex = scrollOffset + idx;
-                  const isSelected = actualIndex === selectedIndex;
-                  return (
-                    <Link
-                      key={activity}
-                      href={`/events#${activity}`}
-                      onClick={() => setSelectedIndex(actualIndex)}
-                      onMouseEnter={() => setSelectedIndex(actualIndex)}
-                      className={`flex items-center gap-2 py-1 font-mono text-sm transition-colors ${
-                        isSelected
-                          ? "text-primary"
-                          : "text-foreground/70 hover:text-foreground"
-                      }`}
-                    >
-                      <span
-                        className={
-                          isSelected ? "text-primary" : "text-foreground/40"
-                        }
-                      >
-                        {isSelected ? "◆" : "◇"}
-                      </span>
-                      <span
-                        className={
-                          isSelected ? "underline underline-offset-2" : ""
-                        }
-                      >
-                        {activity}
-                      </span>
-                      {isSelected && (
-                        <span className="ml-auto text-[9px] text-primary/50">
-                          [ENTER]
-                        </span>
-                      )}
-                    </Link>
-                  );
-                })}
-              </div>
-
-              {/* Scroll down indicator - always reserve space */}
-              <div
-                className={`flex items-center gap-2 py-1 font-mono text-[11px] ${hasMoreBelow ? "text-foreground/40" : "invisible"}`}
-              >
-                <span>↓</span>
-                <span>
-                  {clubActivities.length - scrollOffset - VISIBLE_ITEMS}{" "}
-                  more
-                </span>
-              </div>
-            </div>
-          </div>
-
           {/* Status line */}
           <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider">
             <span className="inline-block h-1.5 w-1.5 animate-pulse bg-primary" />
@@ -479,6 +401,180 @@ function FeatureCard({
       <p className="text-xs leading-relaxed text-foreground/80">
         {description}
       </p>
+    </div>
+  );
+}
+
+const techDomains = [
+  {
+    id: "hackathons",
+    tabLabel: "01. HACKATHONS",
+    title: "HACKATHONS & SPRINTS",
+    badge: "FLAGSHIP PROGRAM",
+    description:
+      "24-48 hour intensive product-building hackathons where developers collaborate to engineer real-world web apps, AI models, and software prototypes.",
+    highlights: [
+      "Hack Nova flagship annual hackathon",
+      "Mentorship from industry engineers",
+      "Exciting prize pools, awards & certificates",
+    ],
+    href: "/events/hackathon/hack-nova",
+    linkText: "EXPLORE HACKATHONS",
+    icon: Cpu,
+  },
+  {
+    id: "competitive",
+    tabLabel: "02. COMPETITIVE CODING",
+    title: "COMPETITIVE PROGRAMMING LEAGUES",
+    badge: "ALGORITHMIC TOURNAMENT",
+    description:
+      "Multi-tiered algorithmic challenges, rated CodeChef contests, and speed-solving tournaments designed to sharpen logic, data structures, and algorithmic speed.",
+    highlights: [
+      "9-Lock Challenges multi-level tournament",
+      "Official CodeChef GCEK Chapter rated rounds",
+      "Editorial problem walkthroughs & practice",
+    ],
+    href: "/events/9-lock-challenges",
+    linkText: "EXPLORE CONTESTS",
+    icon: Trophy,
+  },
+  {
+    id: "workshops",
+    tabLabel: "03. TECH WORKSHOPS",
+    title: "TECHNICAL SESSIONS & LABS",
+    badge: "KNOWLEDGE SERIES",
+    description:
+      "Interactive technical talks, hands-on developer workshops, and expert guest sessions covering modern Web Dev, Cloud & DevOps, Machine Learning, and DSA.",
+    highlights: [
+      "Hands-on coding labs & live projects",
+      "Guest speaker sessions & alumni talks",
+      "Interactive Q&A and skill roadmaps",
+    ],
+    href: "/events/sessions",
+    linkText: "EXPLORE SESSIONS",
+    icon: Terminal,
+  },
+  {
+    id: "opensource",
+    tabLabel: "04. OPEN SOURCE",
+    title: "OPEN SOURCE & CAMPUS PROJECTS",
+    badge: "ENGINEERING FLEET",
+    description:
+      "Collaborative software engineering where student developers build and maintain official college web platforms, fest portals (INSPRANO & UDAAN), and community tools.",
+    highlights: [
+      "Maintain official GCEK digital platforms",
+      "Git & GitHub open-source contributions",
+      "Full-stack team project development",
+    ],
+    href: "/developers/devs",
+    linkText: "MEET DEVELOPERS",
+    icon: GitBranch,
+  },
+];
+
+function InteractiveTechConsole() {
+  const [activeTabId, setActiveTabId] = React.useState("hackathons");
+  const activeDomain = techDomains.find((d) => d.id === activeTabId) || techDomains[0];
+  const DomainIcon = activeDomain.icon;
+
+  return (
+    <div className="mx-auto w-full max-w-4xl">
+      <div className="relative overflow-hidden border border-primary/40 bg-panel/90 p-4 sm:p-6 backdrop-blur-md">
+        {/* Corner Brackets */}
+        <div className="pointer-events-none absolute left-0 top-0 h-4 w-4 border-l-2 border-t-2 border-primary" />
+        <div className="pointer-events-none absolute right-0 top-0 h-4 w-4 border-r-2 border-t-2 border-primary" />
+        <div className="pointer-events-none absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-primary" />
+        <div className="pointer-events-none absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-primary" />
+
+        {/* Scanline overlay */}
+        <div className="crt-scanlines pointer-events-none absolute inset-0 opacity-[0.03]" />
+
+        {/* Header Bar */}
+        <div className="mb-4 flex flex-wrap items-center justify-between border-b border-primary/20 pb-3 gap-2">
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-[10px] sm:text-xs font-bold tracking-[0.2em] text-primary uppercase">
+              INTERACTIVE DOMAIN CONSOLE // SYS.NAV
+            </span>
+          </div>
+          <span className="font-mono text-[10px] text-foreground/60 tracking-wider">
+            [ SELECT TRACK BELOW ]
+          </span>
+        </div>
+
+        {/* Tabs Row */}
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 mb-6">
+          {techDomains.map((domain) => {
+            const isActive = domain.id === activeTabId;
+            return (
+              <button
+                key={domain.id}
+                onClick={() => setActiveTabId(domain.id)}
+                className={cn(
+                  "group relative rounded border px-3 py-2.5 font-mono text-[11px] font-bold tracking-wider transition-all text-left flex items-center justify-between",
+                  isActive
+                    ? "border-primary bg-primary/20 text-primary shadow-[0_0_15px_var(--primary)]"
+                    : "border-primary/20 text-foreground/70 hover:border-primary/50 hover:bg-primary/5 hover:text-primary"
+                )}
+              >
+                <span>{domain.tabLabel}</span>
+                {isActive && (
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Active Domain Panel */}
+        <div className="relative border border-primary/20 bg-primary/5 p-4 sm:p-5 rounded transition-all">
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <span className="font-mono text-[10px] tracking-widest text-primary font-bold bg-primary/10 px-2.5 py-1 rounded border border-primary/30 uppercase">
+              {activeDomain.badge}
+            </span>
+            <span className="font-mono text-[10px] text-foreground/50 tracking-widest uppercase">
+              STATUS: ACTIVE
+            </span>
+          </div>
+
+          <div className="flex items-start gap-4 mb-3">
+            <div className="rounded border border-primary/40 bg-primary/10 p-3 text-primary shrink-0">
+              <DomainIcon className="h-6 w-6" />
+            </div>
+            <div>
+              <h3 className="font-mono text-lg font-bold tracking-wider text-foreground sm:text-xl">
+                {activeDomain.title}
+              </h3>
+              <p className="font-mono text-xs text-foreground/80 mt-1 leading-relaxed">
+                {activeDomain.description}
+              </p>
+            </div>
+          </div>
+
+          {/* Highlights */}
+          <div className="my-4 space-y-1.5 border-t border-primary/15 pt-3">
+            {activeDomain.highlights.map((item, idx) => (
+              <div key={idx} className="flex items-center gap-2 font-mono text-xs text-foreground/75">
+                <span className="text-primary font-bold">▸</span>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Action Link */}
+          <div className="border-t border-primary/20 pt-3 flex items-center justify-end">
+            <Link
+              href={activeDomain.href}
+              className="group/btn relative overflow-hidden rounded border border-primary bg-primary/20 px-5 py-2 font-mono text-xs font-bold tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_20px_var(--primary)]"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                <span>{activeDomain.linkText}</span>
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" />
+              </span>
+              <div className="absolute inset-0 -z-10 translate-y-full bg-primary transition-transform group-hover/btn:translate-y-0" />
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -570,13 +666,8 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Install command */}
-            <div className="mx-auto w-full max-w-2xl">
-              <div className="mb-3 text-center font-mono text-[10px] tracking-widest text-foreground/80">
-                [ QUICK INSTALL ]
-              </div>
-              <TerminalInstall />
-            </div>
+            {/* Interactive Tech Console */}
+            <InteractiveTechConsole />
           </div>
 
           {/* Bottom scroll indicator */}

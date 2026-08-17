@@ -43,7 +43,9 @@ export function Footer() {
             </Link>
 
             <p className="max-w-sm font-mono text-xs leading-relaxed text-foreground/70">
-              Premier coding club at Government College of Engineering Kalahandi. Empowering developers, building innovative projects, and fostering tech excellence.
+              Premier coding club at Government College of Engineering
+              Kalahandi. Empowering developers, building innovative projects,
+              and fostering tech excellence.
             </p>
 
             {/* Social Icons (matching the reference image layout & cyber style) */}
@@ -149,34 +151,52 @@ export function Footer() {
               </div>
               <ul className="space-y-2.5 font-mono text-xs text-foreground/75">
                 <li>
-                  <Link href="/" className="transition-colors hover:text-primary">
+                  <Link
+                    href="/"
+                    className="transition-colors hover:text-primary"
+                  >
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/events" className="transition-colors hover:text-primary">
+                  <Link
+                    href="/events"
+                    className="transition-colors hover:text-primary"
+                  >
                     Events
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about-us" className="transition-colors hover:text-primary">
+                  <Link
+                    href="/about-us"
+                    className="transition-colors hover:text-primary"
+                  >
                     About us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/developers/leads" className="transition-colors hover:text-primary">
+                  <Link
+                    href="/developers/leads"
+                    className="transition-colors hover:text-primary"
+                  >
                     Executive Council
                   </Link>
                 </li>
                 <li>
-                  <Link href="/developers/alumni" className="transition-colors hover:text-primary">
-                    Alumni
+                  <Link
+                    href="/contact"
+                    className="transition-colors hover:text-primary"
+                  >
+                    Contact Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="transition-colors hover:text-primary">
-                    Contact Us
-                  </Link>
+                  <a
+                    href="/faq"
+                    className="transition-colors hover:text-primary"
+                  >
+                    FAQs
+                  </a>
                 </li>
               </ul>
             </div>
@@ -192,22 +212,34 @@ export function Footer() {
               </div>
               <ul className="space-y-2.5 font-mono text-xs text-foreground/75">
                 <li>
-                  <Link href="/events/hackathon/hack-nova" className="transition-colors hover:text-primary">
+                  <Link
+                    href="/events/hackathon/hack-nova"
+                    className="transition-colors hover:text-primary"
+                  >
                     Hack Nova
                   </Link>
                 </li>
                 <li>
-                  <Link href="/events/ideathon" className="transition-colors hover:text-primary">
+                  <Link
+                    href="/events/ideathon"
+                    className="transition-colors hover:text-primary"
+                  >
                     Ideathons
                   </Link>
                 </li>
                 <li>
-                  <Link href="/events/9-lock-challenges" className="transition-colors hover:text-primary">
+                  <Link
+                    href="/events/9-lock-challenges"
+                    className="transition-colors hover:text-primary"
+                  >
                     9-Lock Challenges
                   </Link>
                 </li>
                 <li>
-                  <Link href="/events/codechef" className="transition-colors hover:text-primary">
+                  <Link
+                    href="/events/codechef"
+                    className="transition-colors hover:text-primary"
+                  >
                     CodeCHEF
                   </Link>
                 </li>
@@ -220,7 +252,7 @@ export function Footer() {
                 <div className="absolute -left-px -top-px h-2 w-2 border-l-2 border-t-2 border-primary" />
                 <div className="absolute -right-px -top-px h-2 w-2 border-r-2 border-t-2 border-primary" />
                 <h3 className="font-display text-sm font-bold tracking-[0.3em] text-primary">
-                  COMMUNITY
+                  IMPORTANT LINKS
                 </h3>
               </div>
               <ul className="space-y-2.5 font-mono text-xs text-foreground/75">
@@ -235,13 +267,16 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
-                  <Link href="/developers/teams" className="transition-colors hover:text-primary">
-                    Developer Teams
+                  <Link
+                    href="https://blogs.codebreakersgcek.tech/"
+                    className="transition-colors hover:text-primary"
+                  >
+                    CodeBreakers Blogs
                   </Link>
                 </li>
                 <li>
                   <a
-                    href="mailto:codebreakerscse@gcekbpatna.ac.in"
+                    href="mailto:gcek.codebreakers@gmail.com"
                     className="transition-colors hover:text-primary"
                   >
                     College Inquiries
@@ -249,10 +284,26 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    href="mailto:info@codebreakers.tech"
+                    href="/terms"
                     className="transition-colors hover:text-primary"
                   >
-                    General Contact
+                    Terms and Conditions
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/privacy"
+                    className="transition-colors hover:text-primary"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:gcek.codebreakers@gmail.com"
+                    className="transition-colors hover:text-primary"
+                  >
+                    Report A Bug
                   </a>
                 </li>
               </ul>
@@ -265,9 +316,7 @@ export function Footer() {
           <div>
             © {new Date().getFullYear()} CodeBreakers GCEK. All Rights Reserved.
           </div>
-          <div>
-            Government College of Engineering Kalahandi, Odisha, India
-          </div>
+          <div>Government College of Engineering Kalahandi, Odisha, India</div>
         </div>
 
         <div className="relative mt-6 -mb-6 w-full overflow-hidden select-none pointer-events-none text-center">

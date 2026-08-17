@@ -64,4 +64,18 @@ export const testimonials: Testimonial[] = [
     batch: "2024",
     message: "Building mobile apps with CodeBreakers' support system was incredible. The peer reviews and mentorship shaped my development philosophy.",
   },
+  {
+    id: 9,
+    name: "Gyanranjan Priyam",
+    role: "Full Stack Developer",
+    batch: "2024",
+    message: "CodeBreakers made us more than developers — it turned us into problem-solvers, innovators, and a family that supports each other’s growth.",
+  },
+  {
+    id: 10,
+    name: "Somek Bhuyan",
+    role: "Frontend Developer",
+    batch: "2025",
+    message: "CodeBreakers is where my coding journey truly began. The supportive seniors and hands-on projects helped me grow from a complete beginner into a confident developer.",
+  },
 ];

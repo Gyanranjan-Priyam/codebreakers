@@ -63,7 +63,7 @@ export default function AboutUsPage() {
                 <div className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-primary" />
               </div>
               <h1 className="relative px-6 py-3 font-mono text-4xl font-bold tracking-wider text-primary sm:text-5xl md:text-6xl">
-                ABOUT CODEBREAKERS
+                THE CODEBREAKERS STORY
               </h1>
             </div>
 
@@ -84,7 +84,7 @@ export default function AboutUsPage() {
               <div className="pointer-events-none absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-primary" />
               <div className="pointer-events-none absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-primary" />
 
-              <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start">
+              <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-stretch">
                 
                 {/* Text Content */}
                 <div className="space-y-6 lg:col-span-8">
@@ -134,57 +134,83 @@ export default function AboutUsPage() {
                 </div>
 
                 {/* Sidebar Cyber Milestone Card */}
-                <div className="lg:col-span-4 space-y-6">
-                  <div className="relative border border-primary/40 bg-card/60 p-5 backdrop-blur-sm">
+                <div className="lg:col-span-4 flex flex-col justify-between space-y-6 lg:space-y-4 lg:h-full">
+                  <div className="relative flex flex-1 flex-col justify-between border border-primary/40 bg-card/60 p-5 backdrop-blur-sm">
                     <div className="mb-4 flex items-center justify-between border-b border-primary/20 pb-3 font-mono text-xs text-primary">
                       <span className="flex items-center gap-2">
-                        <span className="h-2 w-2 rounded-full bg-primary animate-ping" />
                         KEY MILESTONES
                       </span>
                       <span>TIMELINE</span>
                     </div>
 
-                    <div className="space-y-4 font-mono text-xs">
+                    <div className="relative flex flex-1 flex-col justify-between space-y-4 py-2 font-mono text-xs pl-6">
+                      {/* Continuous Connecting Line */}
+                      <div className="absolute left-[5px] top-4 bottom-4 w-0.5 bg-primary/50 pointer-events-none" />
+
                       {/* Timeline Item 1 */}
-                      <div className="relative border-l-2 border-primary/40 pl-4 space-y-1">
-                        <div className="absolute -left-[5px] top-0 h-2 w-2 rounded-full bg-primary" />
-                        <div className="font-bold text-primary">2017 — ESTABLISHMENT</div>
-                        <p className="text-foreground/70 text-[11px] leading-relaxed">
-                          Founded by CSE department students & faculty at GCEK.
+                      <div className="relative space-y-1">
+                        <div className="absolute -left-6 top-1 z-10 h-3 w-3 rounded-full bg-primary ring-4 ring-card shadow-[0_0_10px_var(--primary)]" />
+                        <div className="font-bold text-primary tracking-wider text-xs">2017 — FOUNDATION & INITIATIVES</div>
+                        <p className="text-foreground/80 text-[11px] leading-relaxed">
+                          Established by CSE students & faculty to cultivate competitive coding and collaborative learning at GCEK.
                         </p>
+                        <div className="text-[10px] text-primary/70 font-semibold">
+                          ▸ Peer coding circles & tech workshops
+                        </div>
                       </div>
 
                       {/* Timeline Item 2 */}
-                      <div className="relative border-l-2 border-primary/40 pl-4 space-y-1">
-                        <div className="absolute -left-[5px] top-0 h-2 w-2 rounded-full bg-primary" />
-                        <div className="font-bold text-primary">2019 — FORMALLY NAMED</div>
-                        <p className="text-foreground/70 text-[11px] leading-relaxed">
-                          Named CodeBreakers under the mentorship of Dr. Ashok Kumar Bhoi (PIC).
+                      <div className="relative space-y-1">
+                        <div className="absolute -left-6 top-1 z-10 h-3 w-3 rounded-full bg-primary ring-4 ring-card shadow-[0_0_10px_var(--primary)]" />
+                        <div className="font-bold text-primary tracking-wider text-xs">2019 — FORMALLY NAMED</div>
+                        <p className="text-foreground/80 text-[11px] leading-relaxed">
+                          Adopted the name CodeBreakers under mentorship of Dr. Ashok Kumar Bhoi (Professor-in-Charge).
                         </p>
+                        <div className="text-[10px] text-primary/70 font-semibold">
+                          ▸ Structured leadership & annual coding leagues
+                        </div>
                       </div>
 
                       {/* Timeline Item 3 */}
-                      <div className="relative border-l-2 border-primary/40 pl-4 space-y-1">
-                        <div className="absolute -left-[5px] top-0 h-2 w-2 rounded-full bg-primary" />
-                        <div className="font-bold text-primary">2025 — REGISTERED CLUB</div>
-                        <p className="text-foreground/70 text-[11px] leading-relaxed">
-                          Officially registered as an institutional club at GCEK.
+                      <div className="relative space-y-1">
+                        <div className="absolute -left-6 top-1 z-10 h-3 w-3 rounded-full bg-primary ring-4 ring-card shadow-[0_0_10px_var(--primary)]" />
+                        <div className="font-bold text-primary tracking-wider text-xs">2021 — DIGITAL FLEET & EXPANSION</div>
+                        <p className="text-foreground/80 text-[11px] leading-relaxed">
+                          Built official institute platforms, fest portals (INSPRANO & UDAAN), and CodeChef GCEK Chapter.
                         </p>
+                        <div className="text-[10px] text-primary/70 font-semibold">
+                          ▸ Full-stack projects & competitive chapters
+                        </div>
                       </div>
 
                       {/* Timeline Item 4 */}
-                      <div className="relative border-l-2 border-primary/40 pl-4 space-y-1">
-                        <div className="absolute -left-[5px] top-0 h-2 w-2 rounded-full bg-primary animate-pulse" />
-                        <div className="font-bold text-primary">PRESENT — CONTINUOUS INNOVATION</div>
-                        <p className="text-foreground/70 text-[11px] leading-relaxed">
-                          Empowering coders, hosting hackathons, & driving professional excellence.
+                      <div className="relative space-y-1">
+                        <div className="absolute -left-6 top-1 z-10 h-3 w-3 rounded-full bg-primary ring-4 ring-card shadow-[0_0_10px_var(--primary)]" />
+                        <div className="font-bold text-primary tracking-wider text-xs">2025 — OFFICIAL REGISTERED CLUB</div>
+                        <p className="text-foreground/80 text-[11px] leading-relaxed">
+                          Achieved official registration as a recognized institutional club at GCE Kalahandi.
                         </p>
+                        <div className="text-[10px] text-primary/70 font-semibold">
+                          ▸ Executive council & alumni mentorship
+                        </div>
+                      </div>
+
+                      {/* Timeline Item 5 */}
+                      <div className="relative space-y-1">
+                        <div className="absolute -left-6 top-1 z-10 h-3 w-3 rounded-full bg-primary ring-4 ring-card shadow-[0_0_10px_var(--primary)] animate-pulse" />
+                        <div className="font-bold text-primary tracking-wider text-xs">PRESENT — CONTINUOUS INNOVATION</div>
+                        <p className="text-foreground/80 text-[11px] leading-relaxed">
+                          Empowering 500+ student coders through Hack Nova, 9-Lock Challenges, open-source, & placements.
+                        </p>
+                        <div className="text-[10px] text-primary/70 font-semibold">
+                          ▸ Hackathons, rated contests, & career growth
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Motto Box */}
-                  <div className="border border-primary/30 bg-primary/5 p-4 text-center">
+                  <div className="border border-primary/30 bg-primary/5 p-4 text-center shrink-0">
                     <p className="font-mono text-xs font-bold tracking-[0.2em] text-primary uppercase">
                       CodeBreakers — Learn. Build. Innovate. Lead.
                     </p>

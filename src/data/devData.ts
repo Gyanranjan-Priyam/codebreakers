@@ -1,4 +1,38 @@
 export const developers = [
+    {
+    image:
+      "https://res.cloudinary.com/dhyxx8qjf/image/upload/v1786815150/32042072951_whoo1r.png",
+    title: "Barsha Priyadarshini Das",
+    handle: "@Dbarsha_1118",
+    borderColor: "#EC4899",
+    gradient: "linear-gradient(180deg, #EC4899, #000)",
+    url: "https://www.linkedin.com/in/barsha-priyadarshini-das",
+    email: "dasbarshapriyadarshini1803@gmail.com",
+    socials: {
+      github: "https://github.com/Dbarsha-hub",
+      instagram: "",
+      linkedin:
+        "https://www.linkedin.com/in/barsha-priyadarshini-das",
+      website: ""
+    }
+  },
+    {
+    image:
+      "https://res.cloudinary.com/dhyxx8qjf/image/upload/v1786816515/IMG-20260605-WA0037_-_Snehanjali_Nayak_vbuilu.jpg",
+    title: "Snehanjali Nayak",
+    handle: "@Sneha098",
+    borderColor: "#06B6D4",
+    gradient: "linear-gradient(180deg, #06B6D4, #000)",
+    url: "https://www.linkedin.com/in/snehanjali-nayak-76249433a",
+    email: "snehanjalinayak279@gmail.com",
+    socials: {
+      github: "",
+      instagram: "",
+      linkedin:
+        "https://www.linkedin.com/in/snehanjali-nayak-76249433a",
+      website: ""
+    }
+  },
   {
     image:
       "https://res.cloudinary.com/dhyxx8qjf/image/upload/v1786815336/PicsArt_07-13-02.33.52_-_Ankita_Priyadarshini_Sahoo_kmymib.jpg",
@@ -18,23 +52,6 @@ export const developers = [
   },
   {
     image:
-      "https://res.cloudinary.com/dhyxx8qjf/image/upload/v1786816515/IMG-20260605-WA0037_-_Snehanjali_Nayak_vbuilu.jpg",
-    title: "Snehanjali Nayak",
-    handle: "@Sneha098",
-    borderColor: "#06B6D4",
-    gradient: "linear-gradient(180deg, #06B6D4, #000)",
-    url: "https://www.linkedin.com/in/snehanjali-nayak-76249433a",
-    email: "snehanjalinayak279@gmail.com",
-    socials: {
-      github: "",
-      instagram: "",
-      linkedin:
-        "https://www.linkedin.com/in/snehanjali-nayak-76249433a",
-      website: ""
-    }
-  },
-  {
-    image:
       "https://res.cloudinary.com/dhyxx8qjf/image/upload/v1786815399/IMG_20260619_122956_-_Adyasa_Anusaya_Samal_hlwbwm.jpg",
     title: "Adyasa Anusaya Samal",
     handle: "@Adyasa Anusaya Samal",
@@ -47,23 +64,6 @@ export const developers = [
       instagram: "",
       linkedin:
         "https://in.linkedin.com/in/adyasa-anusaya-samal-b72696380",
-      website: ""
-    }
-  },
-  {
-    image:
-      "https://res.cloudinary.com/dhyxx8qjf/image/upload/v1786815150/32042072951_whoo1r.png",
-    title: "Barsha Priyadarshini Das",
-    handle: "@Dbarsha_1118",
-    borderColor: "#EC4899",
-    gradient: "linear-gradient(180deg, #EC4899, #000)",
-    url: "https://www.linkedin.com/in/barsha-priyadarshini-das",
-    email: "dasbarshapriyadarshini1803@gmail.com",
-    socials: {
-      github: "https://github.com/Dbarsha-hub",
-      instagram: "",
-      linkedin:
-        "https://www.linkedin.com/in/barsha-priyadarshini-das",
       website: ""
     }
   },
@@ -199,6 +199,24 @@ export const developers = [
       website: ""
     }
   },
+
+  {
+    image:
+      "https://res.cloudinary.com/dhyxx8qjf/image/upload/v1786984483/WhatsApp_Image_2026-08-17_at_8.26.27_PM_xaoynf.jpg",
+    title: "Deepak Kumar Kar",
+    handle: "@masterdeep27",
+    borderColor: "#22C55E",
+    gradient: "linear-gradient(180deg, #22C55E, #000)",
+    url: "https://instagram.com/helix__hydra",
+    email: "deepakkumarkar190@gmail.com",
+    socials: {
+      github: "https://github.com/DeepakKar17",
+      instagram: "https://www.instagram.com/masterdeep27/",
+      linkedin:
+        "https://www.linkedin.com/in/deepak-kumar-kar-b07bb8403",
+      website: ""
+    }
+  },
   
   {
     image:
@@ -274,6 +292,22 @@ export const developers = [
       github: "https://github.com/JDnayak",
       instagram: "",
       linkedin: "https://www.linkedin.com/in/jaydeep-nayak-7bb057362/",
+      website: ""
+    }
+  },
+    {
+    image: "https://res.cloudinary.com/dhyxx8qjf/image/upload/v1786820882/WhatsApp_Image_2026-08-15_at_2.03.56_PM_-_Somek_qtozf9.jpg",
+    title: "Somek Bhuyan",
+    subtitle: "Event Manager",
+    handle: "@SOMADS969",
+    borderColor: "#EC4899",
+    gradient: "linear-gradient(180deg, #EC4899, #000)",
+    url: "https://github.com/Somax143-max",
+    email: "skbsomek@gmail.com",
+    socials: {
+      github: "https://github.com/Somax143-max",
+      instagram: "https://www.instagram.com/tigerkiller2013",
+      linkedin: "https://www.linkedin.com/in/somek-bhuyan-802a833a0",
       website: ""
     }
   },

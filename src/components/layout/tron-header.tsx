@@ -56,6 +56,29 @@ export function TronHeader({ navItems }: TronHeaderProps) {
   const [mobileExpandedDevelopers, setMobileExpandedDevelopers] = React.useState(false);
   const [mobileExpandedEvents, setMobileExpandedEvents] = React.useState(false);
   const [mobileExpandedHackathon, setMobileExpandedHackathon] = React.useState(false);
+
+  const handleToggleMobileDevelopers = () => {
+    setMobileExpandedDevelopers((prev) => {
+      const next = !prev;
+      if (next) {
+        setMobileExpandedEvents(false);
+        setMobileExpandedHackathon(false);
+      }
+      return next;
+    });
+  };
+
+  const handleToggleMobileEvents = () => {
+    setMobileExpandedEvents((prev) => {
+      const next = !prev;
+      if (next) {
+        setMobileExpandedDevelopers(false);
+      } else {
+        setMobileExpandedHackathon(false);
+      }
+      return next;
+    });
+  };
   const [hackathonDropdownOpen, setHackathonDropdownOpen] = React.useState(false);
   const { theme, setTheme } = useTheme();
   const themeDropdownRef = React.useRef<HTMLDivElement>(null);
@@ -148,7 +171,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                   className="h-10 w-10"
                   priority
                 />
-                <span className="hidden font-sekuya text-xl tracking-normal text-primary sm:inline-block ">
+                <span className="inline-block font-sekuya text-lg sm:text-xl tracking-normal text-primary">
                   CODEBREAKERS
                 </span>
               </Link>
@@ -549,7 +572,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
       {/* Mobile Menu Panel */}
       <div
         className={cn(
-          "fixed right-0 top-0 z-50 h-full w-72 transform border-l border-primary/30 bg-panel transition-transform duration-300 ease-in-out lg:hidden",
+          "fixed right-0 top-0 z-50 flex h-full w-72 flex-col transform border-l border-primary/30 bg-panel transition-transform duration-300 ease-in-out lg:hidden",
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
@@ -558,7 +581,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
           className="crt-scanlines pointer-events-none absolute inset-0 opacity-[0.03]"
         />
         {/* Menu Header - Tron terminal style */}
-        <div className="relative flex h-14 items-center justify-between border-b border-primary/20 px-4">
+        <div className="relative flex h-14 shrink-0 items-center justify-between border-b border-primary/20 px-4">
           {/* Top accent line */}
           <div className="absolute left-0 right-8 top-0 h-px bg-gradient-to-r from-primary/60 via-primary/30 to-transparent" />
 
@@ -575,9 +598,8 @@ export function TronHeader({ navItems }: TronHeaderProps) {
           </button>
         </div>
 
-        {/* Menu Content */}
-        <div className="relative flex flex-col p-4">
-          {/* Navigation Links */}
+        {/* Scrollable Navigation Links */}
+        <div className="relative flex-1 overflow-y-auto p-4">
           <nav className="flex flex-col gap-2">
             {items.map((item, index) => {
               const isDevelopers = item.label === "DEVELOPERS";
@@ -592,7 +614,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                 return (
                   <div key={item.href} className="flex flex-col gap-2">
                     <button
-                      onClick={() => setMobileExpandedDevelopers(!mobileExpandedDevelopers)}
+                      onClick={handleToggleMobileDevelopers}
                       className={cn(
                         "group relative flex items-center gap-3 rounded border px-4 py-3 font-mono text-sm tracking-widest transition-all",
                         isActive
@@ -661,7 +683,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                 return (
                   <div key={item.href} className="flex flex-col gap-2">
                     <button
-                      onClick={() => setMobileExpandedEvents(!mobileExpandedEvents)}
+                      onClick={handleToggleMobileEvents}
                       className={cn(
                         "group relative flex items-center gap-3 rounded border px-4 py-3 font-mono text-sm tracking-widest transition-all",
                         isActive
@@ -828,12 +850,12 @@ export function TronHeader({ navItems }: TronHeaderProps) {
               );
             })}
           </nav>
+        </div>
 
-          {/* Divider */}
-          <div className="my-6 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-
+        {/* Fixed Bottom Section: Theme Selection & Get Started Button */}
+        <div className="relative shrink-0 border-t border-primary/20 bg-panel p-4 flex flex-col gap-4">
           {/* Theme Selector - Mobile */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2">
             <span className="font-mono text-[10px] tracking-widest text-foreground">
               THEME SELECTION
             </span>
@@ -860,14 +882,11 @@ export function TronHeader({ navItems }: TronHeaderProps) {
             </div>
           </div>
 
-          {/* Divider */}
-          <div className="my-6 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-
           {/* Get Started Button - Mobile */}
           <Link
             href="https://app.codebreakersgcek.tech/login"
             onClick={() => setMobileMenuOpen(false)}
-            className="group relative flex items-center justify-center gap-2 overflow-hidden rounded border-2 border-primary bg-primary/20 px-6 py-4 font-mono text-sm font-bold tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+            className="group relative flex items-center justify-center gap-2 overflow-hidden rounded border-2 border-primary bg-primary/20 px-6 py-3 font-mono text-sm font-bold tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground"
           >
             {/* Corner accents */}
             <span className="absolute left-0 top-0 h-3 w-3 border-l-2 border-t-2 border-primary transition-colors group-hover:border-primary-foreground" />
@@ -888,18 +907,6 @@ export function TronHeader({ navItems }: TronHeaderProps) {
             {/* Hover background animation */}
             <div className="absolute inset-0 -z-10 translate-y-full bg-primary transition-transform group-hover:translate-y-0" />
           </Link>
-
-          {/* Footer */}
-          <div className="mt-auto pt-6">
-            <div className="rounded border border-primary/30 bg-primary/5 p-3">
-              <div className="font-mono text-[10px] tracking-widest text-foreground">
-                SYSTEM STATUS
-              </div>
-              <div className="mt-1 font-mono text-xs text-primary">
-                ALL SYSTEMS OPERATIONAL
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </header>
