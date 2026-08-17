@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Grid3D } from "@/components/thegridcn/grid";
@@ -158,7 +157,7 @@ function AlumniCard({
 
         {/* Animated border on hover */}
         <div 
-          className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           style={{
             boxShadow: `inset 0 0 20px ${borderColor}40`,
           }}

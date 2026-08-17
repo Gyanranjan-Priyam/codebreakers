@@ -58,7 +58,6 @@ const clubActivities = [
 
 // Club platforms
 const clubPlatforms = [
-  { id: "discord", command: "discord.gg/codebreakers", label: "Discord" },
   { id: "github", command: "github.com/codebreakers-gcek", label: "GitHub" },
   { id: "linkedin", command: "linkedin.com/company/codebreakers-gce-kalahandi", label: "LinkedIn" },
   { id: "instagram", command: "@gcek.codebreakers", label: "Instagram" },
@@ -70,11 +69,6 @@ const platformById = new Map(clubPlatforms.map((pm) => [pm.id, pm]));
 // Map for O(1) theme lookups
 const themeById = new Map(themes.map((t) => [t.id, t]));
 
-// Static props extracted to avoid re-creation on every render
-const RADAR_TARGETS = [
-  { x: 30, y: 35 },
-  { x: 70, y: 60 },
-];
 
 const STATUS_STRIP_FEATURES = [
   { label: "SECTION", value: "CAPABILITIES", highlighted: true },
@@ -98,7 +92,7 @@ const STATUS_STRIP_FAQ = [
 function TerminalInstall() {
   const router = useRouter();
   const [selectedPlatform, setSelectedPlatform] =
-    React.useState<(typeof clubPlatforms)[number]["id"]>("discord");
+    React.useState<(typeof clubPlatforms)[number]["id"]>("github");
   const [isOpen, setIsOpen] = React.useState(false);
   const [copied, setCopied] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -548,10 +542,10 @@ export default function Home() {
 
               {/* Title content */}
               <div className="relative z-10 py-12 text-center md:py-16">
-                <div className="mb-3 font-mono text-[10px] tracking-[0.5em] text-foreground/80">
+                <div className="mb-3 font-mono text-[12px] tracking-[0.5em] text-foreground/80">
                   WELCOME TO
                 </div>
-                <h1 className="font-display text-4xl font-black tracking-[0.1em] text-primary md:text-6xl lg:text-[6rem] [text-shadow:0_0_80px_oklch(from_var(--primary)_l_c_h/0.5),0_0_160px_oklch(from_var(--primary)_l_c_h/0.3)]">
+                <h1 className="font-sekuya text-4xl font-black tracking-[0.1em] text-primary md:text-6xl lg:text-[6rem]">
                   Code Breakers
                 </h1>
                 <div className="mt-4 font-mono text-sm tracking-[0.4em] text-primary md:text-base">

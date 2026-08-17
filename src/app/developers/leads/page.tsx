@@ -3,15 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Grid3D } from "@/components/thegridcn/grid";
-import { developers } from "@/data/devData";
+import { coreLeads, clubLeads  } from "@/data/leadsData";
 import { ExternalLink, Github, Linkedin, Instagram, Mail, Globe } from "lucide-react";
 
 // Note: metadata export cannot be used in client components
 // This metadata should be moved to layout.tsx or a server component wrapper
 
 interface DeveloperCardProps {
-  image: string;
+image: string;
   title: string;
+  subtitle: string;
   handle: string;
   borderColor: string;
   gradient: string;
@@ -22,13 +23,11 @@ interface DeveloperCardProps {
     instagram?: string;
     linkedin?: string;
     website?: string;
-  };
+  }
 }
 
 
-function DeveloperCard({ image, title, handle, borderColor, gradient, url, email, socials }: DeveloperCardProps) {
-  const hasSocials = socials && (socials.github || socials.linkedin || socials.instagram || socials.website);
-
+function DeveloperCard({ image, title, subtitle, handle, borderColor, gradient, url, email, socials }: DeveloperCardProps) {
   return (
     <div className="group block relative h-full">
       <div
@@ -83,6 +82,9 @@ function DeveloperCard({ image, title, handle, borderColor, gradient, url, email
               <h3 className="font-mono text-xl font-bold tracking-wider text-primary">
                 {title}
               </h3>
+              <p className="mt-1 font-mono text-sm text-foreground/70">
+                {subtitle}
+              </p>
             </div>
 
             <div className="flex items-center gap-2 border-t border-primary/20 pt-3">
@@ -92,108 +94,53 @@ function DeveloperCard({ image, title, handle, borderColor, gradient, url, email
 
             {/* Social icons hint */}
             <div className="flex items-center gap-3 border-t border-primary/20 pt-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              {hasSocials ? (
-                <>
-                  {socials?.github && (
-                    <Link
-                      href={socials.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/70 hover:text-primary transition-colors"
-                    >
-                      <Github className="h-5 w-5" />
-                    </Link>
-                  )}
-                  {socials?.linkedin && (
-                    <Link
-                      href={socials.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/70 hover:text-primary transition-colors"
-                    >
-                      <Linkedin className="h-5 w-5" />
-                    </Link>
-                  )}
-                  {socials?.instagram && (
-                    <Link
-                      href={socials.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/70 hover:text-primary transition-colors"
-                    >
-                      <Instagram className="h-5 w-5" />
-                    </Link>
-                  )}
-                  {socials?.website && socials.website !== url && (
-                    <Link
-                      href={socials.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/70 hover:text-primary transition-colors"
-                    >
-                      <Globe className="h-5 w-5" />
-                    </Link>
-                  )}
-                  {email && (
-                    <Link
-                      href={`mailto:${email}`}
-                      className="text-foreground/70 hover:text-primary transition-colors"
-                    >
-                      <Mail className="h-5 w-5" />
-                    </Link>
-                  )}
-                </>
-              ) : (
-                <>
-                  {url.includes('github') && (
-                    <Link
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/70 hover:text-primary transition-colors"
-                    >
-                      <Github className="h-5 w-5" />
-                    </Link>
-                  )}
-                  {url.includes('linkedin') && (
-                    <Link
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/70 hover:text-primary transition-colors"
-                    >
-                      <Linkedin className="h-5 w-5" />
-                    </Link>
-                  )}
-                  {url.includes('instagram') && (
-                    <Link
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/70 hover:text-primary transition-colors"
-                    >
-                      <Instagram className="h-5 w-5" />
-                    </Link>
-                  )}
-                  {!url.includes('github') && !url.includes('linkedin') && !url.includes('instagram') && (
-                    <Link
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/70 hover:text-primary transition-colors"
-                    >
-                      <Globe className="h-5 w-5" />
-                    </Link>
-                  )}
-                  {email && (
-                    <Link
-                      href={`mailto:${email}`}
-                      className="text-foreground/70 hover:text-primary transition-colors"
-                    >
-                      <Mail className="h-5 w-5" />
-                    </Link>
-                  )}
-                </>
+              {socials?.github && (
+                <Link
+                  href={socials.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-primary transition-colors"
+                >
+                  <Github className="h-5 w-5" />
+                </Link>
+              )}
+              {socials?.linkedin && (
+                <Link
+                  href={socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-primary transition-colors"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </Link>
+              )}
+              {socials?.instagram && (
+                <Link
+                  href={socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-primary transition-colors"
+                >
+                  <Instagram className="h-5 w-5" />
+                </Link>
+              )}
+              {socials?.website && socials.website !== url && (
+                <Link
+                  href={socials.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-primary transition-colors"
+                >
+                  <Globe className="h-5 w-5" />
+                </Link>
+              )}
+              {email && (
+                <Link
+                  href={`mailto:${email}`}
+                  className="text-foreground/70 hover:text-primary transition-colors"
+                >
+                  <Mail className="h-5 w-5" />
+                </Link>
               )}
             </div>
           </div>
@@ -211,7 +158,7 @@ function DeveloperCard({ image, title, handle, borderColor, gradient, url, email
   );
 }
 
-export default function DevelopersPage() {
+export default function LeadsPage() {
   return (
     <div className="relative min-h-screen bg-background">
       {/* 3D Grid background */}
@@ -242,12 +189,12 @@ export default function DevelopersPage() {
               </div>
               
               <h1 className="relative px-12 py-6 font-mono text-4xl font-bold tracking-wider text-primary sm:text-5xl md:text-6xl">
-                OUR DEVELOPERS
+               EXECUTIVE COUNCIL
               </h1>
             </div>
             
             <p className="mt-10 font-mono text-sm tracking-wider text-foreground/70 sm:text-base">
-              MEET THE BRIGHT MINDS BEHIND THE CODE
+              MEET THE LEADERS BEHIND THE CODEBREAKERS
             </p>
           </div>
 
@@ -256,18 +203,43 @@ export default function DevelopersPage() {
             <div className="mb-8 flex items-center gap-4">
               <div className="h-px flex-1 bg-linear-to-r from-transparent to-primary/30" />
               <h2 className="font-mono text-2xl font-bold tracking-wider text-primary">
-                DEVELOPERS
+                LEADERSHIP
               </h2>
               <div className="h-px flex-1 bg-linear-to-l from-transparent to-primary/30" />
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {developers.map((member, index) => (
+              {coreLeads.map((member, index) => (
                 <div
                   key={index}
                   className="animate-fade-in"
                   style={{
                     animationDelay: `${index * 0.1}s`,
+                  }}
+                >
+                  <DeveloperCard {...member} />
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Coordinators Section */}
+          <section>
+            <div className="mb-8 flex items-center gap-4">
+              <div className="h-px flex-1 bg-linear-to-r from-transparent to-primary/30" />
+              <h2 className="font-mono text-2xl font-bold tracking-wider text-primary">
+                MANAGEMENT TEAMS
+              </h2>
+              <div className="h-px flex-1 bg-linear-to-l from-transparent to-primary/30" />
+            </div>
+
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {clubLeads.map((member, index) => (
+                <div
+                  key={index}
+                  className="animate-fade-in"
+                  style={{
+                    animationDelay: `${(coreLeads.length + index) * 0.1}s`,
                   }}
                 >
                   <DeveloperCard {...member} />

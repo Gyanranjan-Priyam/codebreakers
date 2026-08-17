@@ -16,7 +16,6 @@ const siteConfig = {
 export function generateSEO({
   title,
   description,
-  image,
   url,
   noIndex = false,
   keywords,

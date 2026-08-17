@@ -78,7 +78,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
 
   const defaultNavItems: NavItem[] = [
     { href: "/", label: "HOME" },
-    { href: "/projects", label: "PROJECTS" },
+    { href: "/about-us", label: "ABOUT US" },
     { href: "/events", label: "EVENTS" },
     { href: "/developers", label: "DEVELOPERS" },
     { href: "/contact", label: "CONTACT US" },
@@ -86,8 +86,9 @@ export function TronHeader({ navItems }: TronHeaderProps) {
   ];
 
   const developerSubmenu = [
-    { href: "/developers/alumni", label: "ALUMNI" },
+    { href: "/developers/leads", label: "LEADS" },
     { href: "/developers/devs", label: "DEVS" },
+    { href: "/developers/alumni", label: "ALUMNI" },
   ];
 
   const eventSubmenu = [
@@ -147,7 +148,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                   className="h-10 w-10"
                   priority
                 />
-                <span className="hidden font-display text-xl font-bold tracking-wider text-primary sm:inline-block [text-shadow:0_0_20px_oklch(from_var(--primary)_l_c_h/0.4)]">
+                <span className="hidden font-sekuya text-xl tracking-normal text-primary sm:inline-block ">
                   CODEBREAKERS
                 </span>
               </Link>
@@ -158,11 +159,11 @@ export function TronHeader({ navItems }: TronHeaderProps) {
               {items.map((item) => {
                 const isDevelopers = item.label === "DEVELOPERS";
                 const isEvents = item.label === "EVENTS";
-                const isActive = isDevelopers 
+                const isActive = isDevelopers
                   ? pathname.startsWith("/developers")
                   : isEvents
-                  ? pathname.startsWith("/events")
-                  : pathname === item.href;
+                    ? pathname.startsWith("/events")
+                    : pathname === item.href;
 
                 if (isDevelopers) {
                   return (
@@ -207,7 +208,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
 
                       {/* Dropdown Menu */}
                       {developersDropdownOpen && (
-                        <div 
+                        <div
                           className="absolute left-0 top-full z-50 w-48 border border-primary/30 bg-panel shadow-lg pt-1"
                           onMouseEnter={() => setDevelopersDropdownOpen(true)}
                           onMouseLeave={() => setDevelopersDropdownOpen(false)}
@@ -292,7 +293,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
 
                       {/* Dropdown Menu */}
                       {eventsDropdownOpen && (
-                        <div 
+                        <div
                           className="absolute left-0 top-full z-50 w-48 border border-primary/30 bg-panel shadow-lg pt-1"
                           onMouseEnter={() => setEventsDropdownOpen(true)}
                           onMouseLeave={() => setEventsDropdownOpen(false)}
@@ -310,7 +311,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                             {eventSubmenu.map((submenu) => {
                               const isHackathon = submenu.label === "HACKATHON";
                               const isHackathonActive = pathname.startsWith("/events/hackathon");
-                              
+
                               if (isHackathon) {
                                 return (
                                   <div
@@ -337,10 +338,10 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                       </svg>
                                     </button>
-                                    
+
                                     {/* Hackathon Nested Submenu - Opens to the right */}
                                     {hackathonDropdownOpen && (
-                                      <div 
+                                      <div
                                         className="absolute left-full top-0 -ml-px w-48 border border-primary/30 bg-panel shadow-lg"
                                         onMouseEnter={() => setHackathonDropdownOpen(true)}
                                         onMouseLeave={() => setHackathonDropdownOpen(false)}
@@ -383,7 +384,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                                   </div>
                                 );
                               }
-                              
+
                               return (
                                 <Link
                                   key={submenu.href}
@@ -584,8 +585,8 @@ export function TronHeader({ navItems }: TronHeaderProps) {
               const isActive = isDevelopers
                 ? pathname.startsWith("/developers")
                 : isEvents
-                ? pathname.startsWith("/events")
-                : pathname === item.href;
+                  ? pathname.startsWith("/events")
+                  : pathname === item.href;
 
               if (isDevelopers) {
                 return (
@@ -702,7 +703,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                         {eventSubmenu.map((submenu) => {
                           const isHackathon = submenu.label === "HACKATHON";
                           const isHackathonActive = pathname.startsWith("/events/hackathon");
-                          
+
                           if (isHackathon) {
                             return (
                               <div key={submenu.href} className="flex flex-col gap-1">
@@ -733,7 +734,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                                     )}
                                   </div>
                                 </button>
-                                
+
                                 {/* Hackathon Nested Submenu */}
                                 {mobileExpandedHackathon && (
                                   <div className="ml-4 flex flex-col gap-1 border-l-2 border-primary/30 pl-3">
@@ -763,7 +764,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                               </div>
                             );
                           }
-                          
+
                           return (
                             <Link
                               key={submenu.href}
@@ -873,7 +874,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
             <span className="absolute right-0 top-0 h-3 w-3 border-r-2 border-t-2 border-primary transition-colors group-hover:border-primary-foreground" />
             <span className="absolute bottom-0 left-0 h-3 w-3 border-b-2 border-l-2 border-primary transition-colors group-hover:border-primary-foreground" />
             <span className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-primary transition-colors group-hover:border-primary-foreground" />
-            
+
             <span className="relative">GET STARTED</span>
             <svg
               className="relative h-4 w-4"
@@ -883,7 +884,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-            
+
             {/* Hover background animation */}
             <div className="absolute inset-0 -z-10 translate-y-full bg-primary transition-transform group-hover:translate-y-0" />
           </Link>

@@ -443,6 +443,11 @@
   .font-display {
     font-family: var(--font-display);
   }
+
+  /* Sekuya brand font utility */
+  .font-sekuya {
+    font-family: var(--font-sekuya), system-ui, sans-serif;
+  }
 }
 
 /* ============================================

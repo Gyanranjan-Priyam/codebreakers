@@ -433,10 +433,9 @@ export function TronSplashLoader() {
         <div className="relative z-10 px-4 text-center sm:px-6">
           <h1
             aria-label="CODEBREAKERS"
-            className="font-display text-xl font-black tracking-[0.15em] xs:text-2xl xs:tracking-[0.2em] sm:text-3xl sm:tracking-[0.25em] md:text-4xl lg:text-5xl lg:tracking-[0.3em]"
+            className="font-sekuya text-xl font-black tracking-[0.15em] xs:text-2xl xs:tracking-[0.2em] sm:text-3xl sm:tracking-[0.25em] md:text-4xl lg:text-5xl lg:tracking-[0.3em]"
             style={{
               color: "var(--glow, #00e5ff)",
-              textShadow: "0 0 20px var(--glow, #00e5ff), 0 0 40px color-mix(in oklch, var(--glow, #00e5ff) 50%, transparent), 0 0 80px color-mix(in oklch, var(--glow, #00e5ff) 25%, transparent)",
             }}
           >
             {"CODEBREAKERS".split("").map((char, i) => (

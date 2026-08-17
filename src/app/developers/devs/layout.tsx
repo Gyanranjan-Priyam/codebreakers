@@ -3,7 +3,7 @@ import { generateSEO } from '@/lib/seo'
 
 export const metadata: Metadata = generateSEO({
   title: 'Our Developers',
-  description: 'Meet the talented team behind CodeBreakers GCEK. Our core members, coordinators, and developers are passionate about coding, innovation, and building the future of technology at Government College of Engineering Kalahandi.',
+  description: 'Meet the talented developers behind CodeBreakers GCEK. Our core members, coordinators, and developers are passionate about coding, innovation, and building the future of technology at Government College of Engineering Kalahandi.',
   url: '/developers/devs',
   keywords: [
     'CodeBreakers team',
