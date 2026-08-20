@@ -65,8 +65,8 @@ function AlumniCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           
-          {/* Hover overlay with Visit Profile button and social icons */}
-          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          {/* Hover overlay with Visit Profile button */}
+          <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100">
             <Link
               href={url}
               target="_blank"
@@ -76,63 +76,6 @@ function AlumniCard({
               VISIT PROFILE
               <ExternalLink className="h-4 w-4" />
             </Link>
-
-            {/* Social Icons and Email */}
-            <div className="flex items-center gap-3 rounded border border-primary/50 bg-background/40 backdrop-blur-sm px-4 py-2">
-              {socials?.github && (
-                <Link
-                  href={socials.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground/70 hover:text-primary transition-colors"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Github className="h-5 w-5" />
-                </Link>
-              )}
-              {socials?.linkedin && (
-                <Link
-                  href={socials.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground/70 hover:text-primary transition-colors"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Linkedin className="h-5 w-5" />
-                </Link>
-              )}
-              {socials?.instagram && (
-                <Link
-                  href={socials.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground/70 hover:text-primary transition-colors"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Instagram className="h-5 w-5" />
-                </Link>
-              )}
-              {socials?.website && socials.website !== url && (
-                <Link
-                  href={socials.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground/70 hover:text-primary transition-colors"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Globe className="h-5 w-5" />
-                </Link>
-              )}
-              {email && (
-                <Link
-                  href={`mailto:${email}`}
-                  className="text-foreground/70 hover:text-primary transition-colors"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Mail className="h-5 w-5" />
-                </Link>
-              )}
-            </div>
           </div>
         </div>
 
@@ -151,6 +94,58 @@ function AlumniCard({
             <div className="flex items-center gap-2 border-t border-primary/20 pt-3">
               <div className="font-mono text-xs text-foreground/50">ID:</div>
               <div className="font-mono text-xs text-primary">{handle}</div>
+            </div>
+
+            {/* Social links - Always visible */}
+            <div className="flex items-center gap-3 border-t border-primary/20 pt-3 font-mono text-xs">
+              {socials?.github && (
+                <Link
+                  href={socials.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-primary transition-colors"
+                >
+                  <Github className="h-5 w-5" />
+                </Link>
+              )}
+              {socials?.linkedin && (
+                <Link
+                  href={socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-primary transition-colors"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </Link>
+              )}
+              {socials?.instagram && (
+                <Link
+                  href={socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-primary transition-colors"
+                >
+                  <Instagram className="h-5 w-5" />
+                </Link>
+              )}
+              {socials?.website && socials.website !== url && (
+                <Link
+                  href={socials.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-primary transition-colors"
+                >
+                  <Globe className="h-5 w-5" />
+                </Link>
+              )}
+              {email && (
+                <Link
+                  href={`mailto:${email}`}
+                  className="text-foreground/70 hover:text-primary transition-colors"
+                >
+                  <Mail className="h-5 w-5" />
+                </Link>
+              )}
             </div>
           </div>
         </div>

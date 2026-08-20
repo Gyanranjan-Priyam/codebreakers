@@ -63,7 +63,7 @@ function DeveloperCard({ image, title, handle, borderColor, gradient, url, email
           />
           
           {/* Hover overlay with button */}
-          <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100">
             <Link
               href={url}
               target="_blank"
@@ -90,8 +90,8 @@ function DeveloperCard({ image, title, handle, borderColor, gradient, url, email
               <div className="font-mono text-xs text-primary">{handle}</div>
             </div>
 
-            {/* Social icons hint */}
-            <div className="flex items-center gap-3 border-t border-primary/20 pt-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            {/* Social links - Always visible */}
+            <div className="flex items-center gap-3 border-t border-primary/20 pt-3 font-mono text-xs">
               {hasSocials ? (
                 <>
                   {socials?.github && (

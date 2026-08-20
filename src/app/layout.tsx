@@ -6,6 +6,7 @@ import { TronHeader, TronSplashLoader, Footer } from "@/components/layout";
 import "./globals.css";
 import "@/styles/tron-style.css";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Optimize font loading with next/font — self-hosted, no external requests
 const geistMono = Geist_Mono({
@@ -401,6 +402,7 @@ export default function RootLayout({
             }}
           />
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>

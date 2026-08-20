@@ -51,16 +51,35 @@ export function TronHeader({ navItems }: TronHeaderProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [themeDropdownOpen, setThemeDropdownOpen] = React.useState(false);
-  const [developersDropdownOpen, setDevelopersDropdownOpen] = React.useState(false);
+  const [freshersDropdownOpen, setFreshersDropdownOpen] = React.useState(false);
+  const [developersDropdownOpen, setDevelopersDropdownOpen] =
+    React.useState(false);
   const [eventsDropdownOpen, setEventsDropdownOpen] = React.useState(false);
-  const [mobileExpandedDevelopers, setMobileExpandedDevelopers] = React.useState(false);
+  const [mobileExpandedFreshers, setMobileExpandedFreshers] =
+    React.useState(false);
+  const [mobileExpandedDevelopers, setMobileExpandedDevelopers] =
+    React.useState(false);
   const [mobileExpandedEvents, setMobileExpandedEvents] = React.useState(false);
-  const [mobileExpandedHackathon, setMobileExpandedHackathon] = React.useState(false);
+  const [mobileExpandedHackathon, setMobileExpandedHackathon] =
+    React.useState(false);
+
+  const handleToggleMobileFreshers = () => {
+    setMobileExpandedFreshers((prev) => {
+      const next = !prev;
+      if (next) {
+        setMobileExpandedDevelopers(false);
+        setMobileExpandedEvents(false);
+        setMobileExpandedHackathon(false);
+      }
+      return next;
+    });
+  };
 
   const handleToggleMobileDevelopers = () => {
     setMobileExpandedDevelopers((prev) => {
       const next = !prev;
       if (next) {
+        setMobileExpandedFreshers(false);
         setMobileExpandedEvents(false);
         setMobileExpandedHackathon(false);
       }
@@ -72,6 +91,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
     setMobileExpandedEvents((prev) => {
       const next = !prev;
       if (next) {
+        setMobileExpandedFreshers(false);
         setMobileExpandedDevelopers(false);
       } else {
         setMobileExpandedHackathon(false);
@@ -79,25 +99,48 @@ export function TronHeader({ navItems }: TronHeaderProps) {
       return next;
     });
   };
-  const [hackathonDropdownOpen, setHackathonDropdownOpen] = React.useState(false);
+  const [hackathonDropdownOpen, setHackathonDropdownOpen] =
+    React.useState(false);
   const { theme, setTheme } = useTheme();
   const themeDropdownRef = React.useRef<HTMLDivElement>(null);
+  const freshersDropdownRef = React.useRef<HTMLDivElement>(null);
   const developersDropdownRef = React.useRef<HTMLDivElement>(null);
   const eventsDropdownRef = React.useRef<HTMLDivElement>(null);
 
-  // Close theme dropdown when clicking outside
+  // Close dropdowns when clicking outside
   React.useEffect(() => {
-    if (!themeDropdownOpen) return;
+    if (!themeDropdownOpen && !freshersDropdownOpen && !developersDropdownOpen && !eventsDropdownOpen) return;
 
     const handleClickOutside = (e: MouseEvent) => {
-      if (themeDropdownRef.current && !themeDropdownRef.current.contains(e.target as Node)) {
+      if (
+        themeDropdownRef.current &&
+        !themeDropdownRef.current.contains(e.target as Node)
+      ) {
         setThemeDropdownOpen(false);
+      }
+      if (
+        freshersDropdownRef.current &&
+        !freshersDropdownRef.current.contains(e.target as Node)
+      ) {
+        setFreshersDropdownOpen(false);
+      }
+      if (
+        developersDropdownRef.current &&
+        !developersDropdownRef.current.contains(e.target as Node)
+      ) {
+        setDevelopersDropdownOpen(false);
+      }
+      if (
+        eventsDropdownRef.current &&
+        !eventsDropdownRef.current.contains(e.target as Node)
+      ) {
+        setEventsDropdownOpen(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [themeDropdownOpen]);
+  }, [themeDropdownOpen, freshersDropdownOpen, developersDropdownOpen, eventsDropdownOpen]);
 
   const defaultNavItems: NavItem[] = [
     { href: "/", label: "HOME" },
@@ -105,6 +148,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
     { href: "/events", label: "EVENTS" },
     { href: "/developers", label: "DEVELOPERS" },
     { href: "/contact", label: "CONTACT US" },
+    { href: "/how-to-join", label: "FRESHERS" },
     { href: "http://blogs.codebreakersgcek.tech/", label: "BLOGS" },
   ];
 
@@ -120,6 +164,12 @@ export function TronHeader({ navItems }: TronHeaderProps) {
     { href: "/events/codechef", label: "CODECHEF" },
     { href: "/events/ideathon", label: "IDEATHON" },
     { href: "/events/hackathon", label: "HACKATHON" },
+  ];
+
+  const freshersSubmenu = [
+    { href: "https://chat.whatsapp.com/E1Wq4g4qElyIxIfYDhVqri", label: "WhatsApp Group" },
+    { href: "https://app.codebreakersgcek.tech/forms/CB-FRM-200711", label: "Registration Form" },
+    { href: "/how-to-join", label: "How To Join" },
   ];
 
   const hackathonSubmenu = [
@@ -148,13 +198,9 @@ export function TronHeader({ navItems }: TronHeaderProps) {
   return (
     <header className="sticky top-0 z-50">
       {/* Main header bar */}
-      <div
-        className="relative border-b border-primary/30 bg-panel"
-      >
+      <div className="relative border-b border-primary/30 bg-panel">
         {/* CRT scanline effect */}
-        <div
-          className="crt-scanlines pointer-events-none absolute inset-0 opacity-[0.03]"
-        />
+        <div className="crt-scanlines pointer-events-none absolute inset-0 opacity-[0.03]" />
         {/* Top accent line */}
         <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
 
@@ -162,7 +208,10 @@ export function TronHeader({ navItems }: TronHeaderProps) {
           <div className="flex h-16 items-center justify-between">
             {/* Left section - Logo */}
             <div className="flex flex-1 justify-start">
-              <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
+              <Link
+                href="/"
+                className="flex items-center gap-3 transition-opacity hover:opacity-80"
+              >
                 <Image
                   src="/codebreakers-logo.png"
                   alt="CodeBreakers GCEK Logo"
@@ -180,13 +229,143 @@ export function TronHeader({ navItems }: TronHeaderProps) {
             {/* Center section - Navigation (Desktop) */}
             <nav className="hidden items-center gap-1 lg:flex">
               {items.map((item) => {
+                const isFreshers = item.label === "FRESHERS";
                 const isDevelopers = item.label === "DEVELOPERS";
                 const isEvents = item.label === "EVENTS";
-                const isActive = isDevelopers
-                  ? pathname.startsWith("/developers")
-                  : isEvents
-                    ? pathname.startsWith("/events")
-                    : pathname === item.href;
+                const isActive = isFreshers
+                  ? pathname.startsWith("/how-to-join")
+                  : isDevelopers
+                    ? pathname.startsWith("/developers")
+                    : isEvents
+                      ? pathname.startsWith("/events")
+                      : pathname === item.href;
+
+                if (isFreshers) {
+                  return (
+                    <div
+                      key={item.href}
+                      ref={freshersDropdownRef}
+                      className="relative"
+                      onMouseEnter={() => setFreshersDropdownOpen(true)}
+                      onMouseLeave={() => setFreshersDropdownOpen(false)}
+                    >
+                      <button
+                        className={cn(
+                          "group relative flex items-center gap-1 px-4 py-2 font-mono text-xs tracking-widest transition-colors",
+                          isActive
+                            ? "text-primary"
+                            : "text-foreground hover:text-primary",
+                        )}
+                        onClick={() =>
+                          setFreshersDropdownOpen(!freshersDropdownOpen)
+                        }
+                      >
+                        {/* Active/Hover indicator */}
+                        <span
+                          className={cn(
+                            "absolute inset-x-2 bottom-0 h-px bg-primary transition-transform",
+                            isActive
+                              ? "scale-x-100"
+                              : "scale-x-0 group-hover:scale-x-100",
+                          )}
+                        />
+                        <span>{item.label}</span>
+                        <svg
+                          className={cn(
+                            "h-3 w-3 transition-transform",
+                            freshersDropdownOpen ? "rotate-180" : "",
+                          )}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+
+                      {/* Dropdown Menu */}
+                      {freshersDropdownOpen && (
+                        <div
+                          className="absolute left-0 top-full z-50 w-48 border border-primary/30 bg-panel shadow-lg pt-1"
+                          onMouseEnter={() => setFreshersDropdownOpen(true)}
+                          onMouseLeave={() => setFreshersDropdownOpen(false)}
+                        >
+                          {/* Scanline effect */}
+                          <div className="crt-scanlines pointer-events-none absolute inset-0 opacity-[0.03]" />
+                          {/* Header */}
+                          <div className="border-b border-primary/20 bg-primary/5 px-3 py-2">
+                            <span className="font-mono text-[10px] tracking-widest text-primary">
+                              FRESHERS &bull; JOIN US
+                            </span>
+                          </div>
+                          {/* Menu options */}
+                          <div className="p-2">
+                            {freshersSubmenu.map((submenu) => {
+                              if (!submenu.href) {
+                                return (
+                                  <div
+                                    key={submenu.label}
+                                    className="flex items-center justify-between px-3 py-2 font-mono text-xs text-foreground/40 cursor-not-allowed rounded"
+                                  >
+                                    <span>{submenu.label}</span>
+                                    <span className="text-[9px] border border-primary/20 bg-primary/5 px-1 text-primary/70">
+                                      SOON
+                                    </span>
+                                  </div>
+                                );
+                              }
+                              const isExternal = submenu.href.startsWith("http");
+                              if (isExternal) {
+                                return (
+                                  <a
+                                    key={submenu.label}
+                                    href={submenu.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => setFreshersDropdownOpen(false)}
+                                    className="block w-full px-3 py-2 text-left font-mono text-xs tracking-wider text-foreground hover:bg-primary/5 hover:text-primary transition-colors rounded"
+                                  >
+                                    <div className="flex items-center justify-between">
+                                      <span>{submenu.label}</span>
+                                      <span className="font-mono text-[9px] text-primary/50">↗</span>
+                                    </div>
+                                  </a>
+                                );
+                              }
+                              return (
+                                <Link
+                                  key={submenu.label}
+                                  href={submenu.href}
+                                  onClick={() => setFreshersDropdownOpen(false)}
+                                  className={cn(
+                                    "block w-full px-3 py-2 text-left font-mono text-xs tracking-wider transition-colors rounded",
+                                    pathname === submenu.href
+                                      ? "bg-primary/10 text-primary"
+                                      : "text-foreground hover:bg-primary/5 hover:text-primary",
+                                  )}
+                                >
+                                  <div className="flex items-center justify-between">
+                                    <span>{submenu.label}</span>
+                                    {pathname === submenu.href && (
+                                      <span className="font-mono text-[9px] text-primary/50">
+                                        ✓
+                                      </span>
+                                    )}
+                                  </div>
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
 
                 if (isDevelopers) {
                   return (
@@ -202,9 +381,11 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                           "group relative flex items-center gap-1 px-4 py-2 font-mono text-xs tracking-widest transition-colors",
                           isActive
                             ? "text-primary"
-                            : "text-foreground hover:text-primary"
+                            : "text-foreground hover:text-primary",
                         )}
-                        onClick={() => setDevelopersDropdownOpen(!developersDropdownOpen)}
+                        onClick={() =>
+                          setDevelopersDropdownOpen(!developersDropdownOpen)
+                        }
                       >
                         {/* Active/Hover indicator */}
                         <span
@@ -212,20 +393,25 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                             "absolute inset-x-2 bottom-0 h-px bg-primary transition-transform",
                             isActive
                               ? "scale-x-100"
-                              : "scale-x-0 group-hover:scale-x-100"
+                              : "scale-x-0 group-hover:scale-x-100",
                           )}
                         />
                         <span>{item.label}</span>
                         <svg
                           className={cn(
                             "h-3 w-3 transition-transform",
-                            developersDropdownOpen ? "rotate-180" : ""
+                            developersDropdownOpen ? "rotate-180" : "",
                           )}
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
                         </svg>
                       </button>
 
@@ -255,13 +441,15 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                                   "block w-full px-3 py-2 text-left font-mono text-xs tracking-wider transition-colors rounded",
                                   pathname === submenu.href
                                     ? "bg-primary/10 text-primary"
-                                    : "text-foreground hover:bg-primary/5 hover:text-primary"
+                                    : "text-foreground hover:bg-primary/5 hover:text-primary",
                                 )}
                               >
                                 <div className="flex items-center justify-between">
                                   <span>{submenu.label}</span>
                                   {pathname === submenu.href && (
-                                    <span className="font-mono text-[9px] text-primary/50">✓</span>
+                                    <span className="font-mono text-[9px] text-primary/50">
+                                      ✓
+                                    </span>
                                   )}
                                 </div>
                               </Link>
@@ -287,9 +475,11 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                           "group relative flex items-center gap-1 px-4 py-2 font-mono text-xs tracking-widest transition-colors",
                           isActive
                             ? "text-primary"
-                            : "text-foreground hover:text-primary"
+                            : "text-foreground hover:text-primary",
                         )}
-                        onClick={() => setEventsDropdownOpen(!eventsDropdownOpen)}
+                        onClick={() =>
+                          setEventsDropdownOpen(!eventsDropdownOpen)
+                        }
                       >
                         {/* Active/Hover indicator */}
                         <span
@@ -297,20 +487,25 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                             "absolute inset-x-2 bottom-0 h-px bg-primary transition-transform",
                             isActive
                               ? "scale-x-100"
-                              : "scale-x-0 group-hover:scale-x-100"
+                              : "scale-x-0 group-hover:scale-x-100",
                           )}
                         />
                         <span>{item.label}</span>
                         <svg
                           className={cn(
                             "h-3 w-3 transition-transform",
-                            eventsDropdownOpen ? "rotate-180" : ""
+                            eventsDropdownOpen ? "rotate-180" : "",
                           )}
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
                         </svg>
                       </button>
 
@@ -333,22 +528,28 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                           <div className="p-2">
                             {eventSubmenu.map((submenu) => {
                               const isHackathon = submenu.label === "HACKATHON";
-                              const isHackathonActive = pathname.startsWith("/events/hackathon");
+                              const isHackathonActive =
+                                pathname.startsWith("/events/hackathon");
 
                               if (isHackathon) {
                                 return (
                                   <div
                                     key={submenu.href}
                                     className="relative"
-                                    onMouseEnter={() => setHackathonDropdownOpen(true)}
-                                    onMouseLeave={() => setHackathonDropdownOpen(false)}
+                                    onMouseEnter={() =>
+                                      setHackathonDropdownOpen(true)
+                                    }
+                                    onMouseLeave={() =>
+                                      setHackathonDropdownOpen(false)
+                                    }
                                   >
                                     <button
                                       className={cn(
                                         "flex w-full items-center justify-between px-3 py-2 text-left font-mono text-xs tracking-wider transition-colors rounded",
-                                        hackathonDropdownOpen || isHackathonActive
+                                        hackathonDropdownOpen ||
+                                          isHackathonActive
                                           ? "bg-primary/10 text-primary"
-                                          : "text-foreground hover:bg-primary/5 hover:text-primary"
+                                          : "text-foreground hover:bg-primary/5 hover:text-primary",
                                       )}
                                     >
                                       <span>{submenu.label}</span>
@@ -358,7 +559,12 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
                                       >
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        <path
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                          strokeWidth={2}
+                                          d="M19 9l-7 7-7-7"
+                                        />
                                       </svg>
                                     </button>
 
@@ -366,8 +572,12 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                                     {hackathonDropdownOpen && (
                                       <div
                                         className="absolute left-full top-0 -ml-px w-48 border border-primary/30 bg-panel shadow-lg"
-                                        onMouseEnter={() => setHackathonDropdownOpen(true)}
-                                        onMouseLeave={() => setHackathonDropdownOpen(false)}
+                                        onMouseEnter={() =>
+                                          setHackathonDropdownOpen(true)
+                                        }
+                                        onMouseLeave={() =>
+                                          setHackathonDropdownOpen(false)
+                                        }
                                       >
                                         <div className="crt-scanlines pointer-events-none absolute inset-0 opacity-[0.03]" />
                                         {/* Header */}
@@ -390,13 +600,16 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                                                 "block w-full px-3 py-2 text-left font-mono text-xs tracking-wider transition-colors rounded",
                                                 pathname === hackathon.href
                                                   ? "bg-primary/10 text-primary"
-                                                  : "text-foreground hover:bg-primary/5 hover:text-primary"
+                                                  : "text-foreground hover:bg-primary/5 hover:text-primary",
                                               )}
                                             >
                                               <div className="flex items-center justify-between">
                                                 <span>{hackathon.label}</span>
-                                                {pathname === hackathon.href && (
-                                                  <span className="font-mono text-[9px] text-primary/50">✓</span>
+                                                {pathname ===
+                                                  hackathon.href && (
+                                                  <span className="font-mono text-[9px] text-primary/50">
+                                                    ✓
+                                                  </span>
                                                 )}
                                               </div>
                                             </Link>
@@ -417,13 +630,15 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                                     "block w-full px-3 py-2 text-left font-mono text-xs tracking-wider transition-colors rounded",
                                     pathname === submenu.href
                                       ? "bg-primary/10 text-primary"
-                                      : "text-foreground hover:bg-primary/5 hover:text-primary"
+                                      : "text-foreground hover:bg-primary/5 hover:text-primary",
                                   )}
                                 >
                                   <div className="flex items-center justify-between">
                                     <span>{submenu.label}</span>
                                     {pathname === submenu.href && (
-                                      <span className="font-mono text-[9px] text-primary/50">✓</span>
+                                      <span className="font-mono text-[9px] text-primary/50">
+                                        ✓
+                                      </span>
                                     )}
                                   </div>
                                 </Link>
@@ -444,7 +659,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                       "group relative px-4 py-2 font-mono text-xs tracking-widest transition-colors",
                       isActive
                         ? "text-primary"
-                        : "text-foreground hover:text-primary"
+                        : "text-foreground hover:text-primary",
                     )}
                   >
                     {/* Active/Hover indicator */}
@@ -453,7 +668,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                         "absolute inset-x-2 bottom-0 h-px bg-primary transition-transform",
                         isActive
                           ? "scale-x-100"
-                          : "scale-x-0 group-hover:scale-x-100"
+                          : "scale-x-0 group-hover:scale-x-100",
                       )}
                     />
                     {item.label}
@@ -476,13 +691,18 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                   <svg
                     className={cn(
                       "h-3 w-3 text-primary transition-transform",
-                      themeDropdownOpen ? "rotate-180" : ""
+                      themeDropdownOpen ? "rotate-180" : "",
                     )}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
 
@@ -509,13 +729,15 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                             "group relative w-full px-3 py-2 text-left font-mono text-xs tracking-wider transition-colors",
                             theme === t.id
                               ? "bg-primary/10 text-primary"
-                              : "text-foreground hover:bg-primary/5 hover:text-primary"
+                              : "text-foreground hover:bg-primary/5 hover:text-primary",
                           )}
                         >
                           <div className="flex items-center justify-between">
                             <span>{t.name}</span>
                             {theme === t.id && (
-                              <span className="font-mono text-[9px] text-primary/50">✓</span>
+                              <span className="font-mono text-[9px] text-primary/50">
+                                ✓
+                              </span>
                             )}
                           </div>
                         </button>
@@ -537,7 +759,12 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
                 </svg>
               </Link>
 
@@ -562,9 +789,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
       <div
         className={cn(
           "fixed inset-0 z-40 bg-background/80 backdrop-blur-sm transition-opacity lg:hidden",
-          mobileMenuOpen
-            ? "opacity-100"
-            : "pointer-events-none opacity-0"
+          mobileMenuOpen ? "opacity-100" : "pointer-events-none opacity-0",
         )}
         onClick={() => setMobileMenuOpen(false)}
       />
@@ -573,13 +798,11 @@ export function TronHeader({ navItems }: TronHeaderProps) {
       <div
         className={cn(
           "fixed right-0 top-0 z-50 flex h-full w-72 flex-col transform border-l border-primary/30 bg-panel transition-transform duration-300 ease-in-out lg:hidden",
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
         {/* CRT scanline effect */}
-        <div
-          className="crt-scanlines pointer-events-none absolute inset-0 opacity-[0.03]"
-        />
+        <div className="crt-scanlines pointer-events-none absolute inset-0 opacity-[0.03]" />
         {/* Menu Header - Tron terminal style */}
         <div className="relative flex h-14 shrink-0 items-center justify-between border-b border-primary/20 px-4">
           {/* Top accent line */}
@@ -602,24 +825,27 @@ export function TronHeader({ navItems }: TronHeaderProps) {
         <div className="relative flex-1 overflow-y-auto p-4">
           <nav className="flex flex-col gap-2">
             {items.map((item, index) => {
+              const isFreshers = item.label === "FRESHERS";
               const isDevelopers = item.label === "DEVELOPERS";
               const isEvents = item.label === "EVENTS";
-              const isActive = isDevelopers
-                ? pathname.startsWith("/developers")
-                : isEvents
-                  ? pathname.startsWith("/events")
-                  : pathname === item.href;
+              const isActive = isFreshers
+                ? pathname.startsWith("/how-to-join")
+                : isDevelopers
+                  ? pathname.startsWith("/developers")
+                  : isEvents
+                    ? pathname.startsWith("/events")
+                    : pathname === item.href;
 
-              if (isDevelopers) {
+              if (isFreshers) {
                 return (
                   <div key={item.href} className="flex flex-col gap-2">
                     <button
-                      onClick={handleToggleMobileDevelopers}
+                      onClick={handleToggleMobileFreshers}
                       className={cn(
                         "group relative flex items-center gap-3 rounded border px-4 py-3 font-mono text-sm tracking-widest transition-all",
                         isActive
                           ? "border-primary bg-primary/10 text-primary"
-                          : "border-primary/20 text-foreground/80 hover:border-primary/50 hover:bg-primary/5 hover:text-primary"
+                          : "border-primary/20 text-foreground/80 hover:border-primary/50 hover:bg-primary/5 hover:text-primary",
                       )}
                     >
                       {/* Index number */}
@@ -634,13 +860,132 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                       <svg
                         className={cn(
                           "ml-auto h-3 w-3 transition-transform",
-                          mobileExpandedDevelopers ? "rotate-180" : ""
+                          mobileExpandedFreshers ? "rotate-180" : "",
                         )}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+
+                      {/* Corner accents */}
+                      <span className="absolute left-0 top-0 h-2 w-2 border-l border-t border-primary/50" />
+                      <span className="absolute right-0 top-0 h-2 w-2 border-r border-t border-primary/50" />
+                      <span className="absolute bottom-0 left-0 h-2 w-2 border-b border-l border-primary/50" />
+                      <span className="absolute bottom-0 right-0 h-2 w-2 border-b border-r border-primary/50" />
+                    </button>
+
+                    {/* Submenu */}
+                    {mobileExpandedFreshers && (
+                      <div className="ml-4 flex flex-col gap-1 border-l-2 border-primary/30 pl-3">
+                        {freshersSubmenu.map((submenu) => {
+                          if (!submenu.href) {
+                            return (
+                              <div
+                                key={submenu.label}
+                                className="flex items-center justify-between px-3 py-2 font-mono text-xs text-foreground/40"
+                              >
+                                <div className="flex items-center gap-2">
+                                  <span className="text-primary/30">▸</span>
+                                  <span>{submenu.label}</span>
+                                </div>
+                                <span className="text-[9px] text-primary/50">
+                                  SOON
+                                </span>
+                              </div>
+                            );
+                          }
+                          const isExternal = submenu.href.startsWith("http");
+                          if (isExternal) {
+                            return (
+                              <a
+                                key={submenu.label}
+                                href={submenu.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="px-3 py-2 font-mono text-xs tracking-wider text-foreground/70 hover:text-primary transition-colors"
+                              >
+                                <div className="flex items-center gap-2">
+                                  <span className="text-primary/50">▸</span>
+                                  <span>{submenu.label}</span>
+                                  <span className="ml-auto text-[10px] text-primary/50">↗</span>
+                                </div>
+                              </a>
+                            );
+                          }
+                          return (
+                            <Link
+                              key={submenu.label}
+                              href={submenu.href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className={cn(
+                                "px-3 py-2 font-mono text-xs tracking-wider transition-colors",
+                                pathname === submenu.href
+                                  ? "text-primary"
+                                  : "text-foreground/70 hover:text-primary",
+                              )}
+                            >
+                              <div className="flex items-center gap-2">
+                                <span className="text-primary/50">▸</span>
+                                <span>{submenu.label}</span>
+                                {pathname === submenu.href && (
+                                  <span className="ml-auto text-[10px] text-primary">
+                                    ACTIVE
+                                  </span>
+                                )}
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              if (isDevelopers) {
+                return (
+                  <div key={item.href} className="flex flex-col gap-2">
+                    <button
+                      onClick={handleToggleMobileDevelopers}
+                      className={cn(
+                        "group relative flex items-center gap-3 rounded border px-4 py-3 font-mono text-sm tracking-widest transition-all",
+                        isActive
+                          ? "border-primary bg-primary/10 text-primary"
+                          : "border-primary/20 text-foreground/80 hover:border-primary/50 hover:bg-primary/5 hover:text-primary",
+                      )}
+                    >
+                      {/* Index number */}
+                      <span className="font-mono text-[10px] text-primary/50">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+
+                      {/* Label */}
+                      <span>{item.label}</span>
+
+                      {/* Chevron icon */}
+                      <svg
+                        className={cn(
+                          "ml-auto h-3 w-3 transition-transform",
+                          mobileExpandedDevelopers ? "rotate-180" : "",
+                        )}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
                       </svg>
 
                       {/* Corner accents */}
@@ -662,14 +1007,16 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                               "px-3 py-2 font-mono text-xs tracking-wider transition-colors",
                               pathname === submenu.href
                                 ? "text-primary"
-                                : "text-foreground/70 hover:text-primary"
+                                : "text-foreground/70 hover:text-primary",
                             )}
                           >
                             <div className="flex items-center gap-2">
                               <span className="text-primary/50">▸</span>
                               <span>{submenu.label}</span>
                               {pathname === submenu.href && (
-                                <span className="ml-auto text-[10px] text-primary">ACTIVE</span>
+                                <span className="ml-auto text-[10px] text-primary">
+                                  ACTIVE
+                                </span>
                               )}
                             </div>
                           </Link>
@@ -688,7 +1035,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                         "group relative flex items-center gap-3 rounded border px-4 py-3 font-mono text-sm tracking-widest transition-all",
                         isActive
                           ? "border-primary bg-primary/10 text-primary"
-                          : "border-primary/20 text-foreground/80 hover:border-primary/50 hover:bg-primary/5 hover:text-primary"
+                          : "border-primary/20 text-foreground/80 hover:border-primary/50 hover:bg-primary/5 hover:text-primary",
                       )}
                     >
                       {/* Index number */}
@@ -703,13 +1050,18 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                       <svg
                         className={cn(
                           "ml-auto h-3 w-3 transition-transform",
-                          mobileExpandedEvents ? "rotate-180" : ""
+                          mobileExpandedEvents ? "rotate-180" : "",
                         )}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
                       </svg>
 
                       {/* Corner accents */}
@@ -724,35 +1076,52 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                       <div className="ml-4 flex flex-col gap-1 border-l-2 border-primary/30 pl-3">
                         {eventSubmenu.map((submenu) => {
                           const isHackathon = submenu.label === "HACKATHON";
-                          const isHackathonActive = pathname.startsWith("/events/hackathon");
+                          const isHackathonActive =
+                            pathname.startsWith("/events/hackathon");
 
                           if (isHackathon) {
                             return (
-                              <div key={submenu.href} className="flex flex-col gap-1">
+                              <div
+                                key={submenu.href}
+                                className="flex flex-col gap-1"
+                              >
                                 <button
-                                  onClick={() => setMobileExpandedHackathon(!mobileExpandedHackathon)}
+                                  onClick={() =>
+                                    setMobileExpandedHackathon(
+                                      !mobileExpandedHackathon,
+                                    )
+                                  }
                                   className={cn(
                                     "px-3 py-2 font-mono text-xs tracking-wider transition-colors text-left",
                                     isHackathonActive
                                       ? "text-primary"
-                                      : "text-foreground/70 hover:text-primary"
+                                      : "text-foreground/70 hover:text-primary",
                                   )}
                                 >
                                   <div className="flex items-center gap-2">
                                     <svg
                                       className={cn(
                                         "h-3 w-3 text-primary/50 transition-transform",
-                                        mobileExpandedHackathon ? "rotate-90" : ""
+                                        mobileExpandedHackathon
+                                          ? "rotate-90"
+                                          : "",
                                       )}
                                       fill="none"
                                       viewBox="0 0 24 24"
                                       stroke="currentColor"
                                     >
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M9 5l7 7-7 7"
+                                      />
                                     </svg>
                                     <span>{submenu.label}</span>
                                     {isHackathonActive && (
-                                      <span className="ml-auto text-[10px] text-primary">ACTIVE</span>
+                                      <span className="ml-auto text-[10px] text-primary">
+                                        ACTIVE
+                                      </span>
                                     )}
                                   </div>
                                 </button>
@@ -769,14 +1138,18 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                                           "px-3 py-2 font-mono text-xs tracking-wider transition-colors",
                                           pathname === hackathon.href
                                             ? "text-primary"
-                                            : "text-foreground/70 hover:text-primary"
+                                            : "text-foreground/70 hover:text-primary",
                                         )}
                                       >
                                         <div className="flex items-center gap-2">
-                                          <span className="text-primary/50">▸</span>
+                                          <span className="text-primary/50">
+                                            ▸
+                                          </span>
                                           <span>{hackathon.label}</span>
                                           {pathname === hackathon.href && (
-                                            <span className="ml-auto text-[10px] text-primary">ACTIVE</span>
+                                            <span className="ml-auto text-[10px] text-primary">
+                                              ACTIVE
+                                            </span>
                                           )}
                                         </div>
                                       </Link>
@@ -796,14 +1169,16 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                                 "px-3 py-2 font-mono text-xs tracking-wider transition-colors",
                                 pathname === submenu.href
                                   ? "text-primary"
-                                  : "text-foreground/70 hover:text-primary"
+                                  : "text-foreground/70 hover:text-primary",
                               )}
                             >
                               <div className="flex items-center gap-2">
                                 <span className="text-primary/50">▸</span>
                                 <span>{submenu.label}</span>
                                 {pathname === submenu.href && (
-                                  <span className="ml-auto text-[10px] text-primary">ACTIVE</span>
+                                  <span className="ml-auto text-[10px] text-primary">
+                                    ACTIVE
+                                  </span>
                                 )}
                               </div>
                             </Link>
@@ -823,7 +1198,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                     "group relative flex items-center gap-3 rounded border px-4 py-3 font-mono text-sm tracking-widest transition-all",
                     isActive
                       ? "border-primary bg-primary/10 text-primary"
-                      : "border-primary/20 text-foreground/80 hover:border-primary/50 hover:bg-primary/5 hover:text-primary"
+                      : "border-primary/20 text-foreground/80 hover:border-primary/50 hover:bg-primary/5 hover:text-primary",
                   )}
                 >
                   {/* Index number */}
@@ -868,7 +1243,7 @@ export function TronHeader({ navItems }: TronHeaderProps) {
                     "group relative rounded border px-3 py-2 font-mono text-xs tracking-wider transition-all",
                     theme === t.id
                       ? "border-primary bg-primary/10 text-primary"
-                      : "border-primary/20 text-foreground/80 hover:border-primary/50 hover:bg-primary/5 hover:text-primary"
+                      : "border-primary/20 text-foreground/80 hover:border-primary/50 hover:bg-primary/5 hover:text-primary",
                   )}
                 >
                   <div className="flex items-center justify-between">
@@ -901,7 +1276,12 @@ export function TronHeader({ navItems }: TronHeaderProps) {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
             </svg>
 
             {/* Hover background animation */}
