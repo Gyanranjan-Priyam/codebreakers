@@ -3,7 +3,7 @@ export const alumni = [
     image:
       "https://res.cloudinary.com/dhyxx8qjf/image/upload/v1786780221/625777634_18057167012346580_8147796629937380270_n_but7yy.jpg",
     title: "Piyush Pandey",
-    subtitle: "Now at Mable",
+    subtitle: "Now at Mable GMBH",
     handle: "@zephyrus21",
     borderColor: "#8B5CF6",
     gradient: "linear-gradient(145deg, #8B5CF6, #000)",
@@ -14,6 +14,23 @@ export const alumni = [
       instagram: "https://www.instagram.com/zephyrus21_py/",
       linkedin: "https://www.linkedin.com/in/zephyrus21/",
       website: "https://piyushify.com",
+    },
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dhyxx8qjf/image/upload/v1787236605/771893501_18169808038443149_6354552431608772774_n_uapahx.jpg",
+    title: "Rakesh Gain",
+    subtitle: "Now at Amazon India",
+    handle: "@gainrakesh.io",
+    borderColor: "#8B5CF6",
+    gradient: "linear-gradient(145deg, #8B5CF6, #000)",
+    url: "https://github.com/mrGain",
+    email: " rakeshgain47681@gmail.com",
+    socials: {
+      github: "https://github.com/mrGain",
+      instagram: "https://www.instagram.com/gainrakesh.io",
+      linkedin: "https://www.linkedin.com/in/rakesh-gain/",
+      website: "https://github.com/mrGain",
     },
   },
   {
@@ -35,6 +52,23 @@ export const alumni = [
   },
   {
     image:
+      "https://res.cloudinary.com/dhyxx8qjf/image/upload/v1787237278/1765002587804_frhzj9.jpg",
+    title: "Lokanath Panda",
+    subtitle: "Now at Hirekarma",
+    handle: "@lokanath",
+    borderColor: "#8B5CF6",
+    gradient: "linear-gradient(145deg, #8B5CF6, #000)",
+    url: "https://lokanathpanda7.netlify.app ",
+    email: "lokanathpanda128@gmail.com",
+    socials: {
+      github: "https://github.com/iamlokanath",
+      instagram: "https://instagram.com/lokanathpanda7",
+      linkedin: "https://linkedin.com/in/lokanath-panda-642193238",
+      website: "https://lokanathpanda7.netlify.app",
+    },
+  },
+  {
+    image:
       "https://res.cloudinary.com/dw47ib0sh/image/upload/v1764686754/ypipjwmbsrgz4qtrwmru.jpg",
     title: "Podili Biswajit",
     subtitle: "Now at Tata Consultancy Service",
@@ -49,31 +83,41 @@ export const alumni = [
       website: "https://www.biswajitpodili.dev/",
     },
   },
-  // {
-  //   image:
-  //     "https://res.cloudinary.com/dw47ib0sh/image/upload/v1764688696/aixxacrlbbdoabw4amfc.jpg",
-  //   title: "Sambhunath Meher",
-  //   subtitle: "Now at IIT",
-  //   handle: "@sambhunathmeher",
-  //   borderColor: "#3B82F6",
-  //   gradient: "linear-gradient(165deg,#F59E0B,#000)",
-  //   url: "https://github.com/MarkWolf257",
-  // },
-  // {
-  //   image:
-  //     "https://res.cloudinary.com/dw47ib0sh/image/upload/v1764687876/y80btmy7yo95oul1thyz.jpg",
-  //   title: "Madan Mohan Behera",
-  //   subtitle: "Now at TCS",
-  //   handle: "@madan1500",
-  //   borderColor: "#10B981",
-  //   gradient: "linear-gradient(215deg,#06B6D4,#000)",
-  //   url: "https://github.com/madan1500",
-  // },
+  {
+    image:
+      "https://res.cloudinary.com/dw47ib0sh/image/upload/v1764688696/aixxacrlbbdoabw4amfc.jpg",
+    title: "Sambhunath Meher",
+    subtitle: "Now at IIT Kharagpur",
+    handle: "@sambhunathmeher",
+    borderColor: "#3B82F6",
+    gradient: "linear-gradient(165deg,#F59E0B,#000)",
+    url: "https://github.com/MarkWolf257",
+    email: "",
+    socials: {
+      github: "https://github.com/MarkWolf257",
+  }
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dw47ib0sh/image/upload/v1764687876/y80btmy7yo95oul1thyz.jpg",
+    title: "Madan Mohan Behera",
+    subtitle: "Now at Tata Consultancy Services",
+    handle: "@madan1500",
+    borderColor: "#10B981",
+    gradient: "linear-gradient(215deg,#06B6D4,#000)",
+    url: "https://github.com/madan1500",
+    email: "madanmohan14072002@gmail.com",
+    socials: {
+      github: "https://github.com/madan150",
+      linkedin: "https://www.linkedin.com/in/madan-mohan-behera-a565b6292/",
+
+    }
+  },
   {
     image:
       "https://res.cloudinary.com/dw47ib0sh/image/upload/v1764699685/dz9tw2fu2c4hknnx8m7b.jpg",
     title: "R. Pradyota Reddy",
-    subtitle: "Now at Tekkzy Intelligent Cloud Applications",
+    subtitle: "Now at Tekkzy Intelligent Cloud",
     handle: "@r.r.reddy",
     borderColor: "#10B981",
     gradient: "linear-gradient(180deg, #10B981, #000)",

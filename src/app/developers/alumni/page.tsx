@@ -197,7 +197,7 @@ export default function AlumniPage() {
               </h1>
             </div>
             
-            <p className="mt-6 font-mono text-sm tracking-wider text-foreground/70 sm:text-base">
+            <p className="mt-10 font-mono text-sm tracking-wider text-foreground/70 sm:text-base">
               HONORING THE LEGACY OF CODEBREAKERS
             </p>
 
